@@ -1,6 +1,6 @@
 # zyra-ui
 
-Component-driven, reactive UI library and declarative **ZYX** markup preprocessor for the [Zyra Programming Language](https://github.com/AndreaPallotta/zyra).
+Component-driven, reactive UI library and declarative **ZYX** markup for the [Zyra Programming Language](https://github.com/AndreaPallotta/zyra).
 
 Inspired by the component and reactivity mental models of Vue and React.
 
@@ -10,7 +10,7 @@ Inspired by the component and reactivity mental models of Vue and React.
 - **Virtual DOM Primitives**: Lightweight `VNode` representation of elements and attributes.
 - **Component Constructors**: Ergonomic element helper functions (`h`, `div`, `h1`, `p`, `button`, `input`).
 - **Clean HTML String Rendering**: Server-side rendering (SSR) and static markup generation with `render_html` and `render_page`.
-- **Standalone Package**: Zero compiler modifications required. Ships with its own `zyx` build tool.
+- **Native Declarative ZYX**: Supported natively in the Zyra compiler with zero external dependencies.
 
 ## Installation
 
@@ -53,10 +53,10 @@ def main(): Int {
 }
 ```
 
-Compile and run `.zyx` directly:
+Compile and run `.zyx` natively:
 
 ```bash
-python .zyra_modules/github.com/AndreaPallotta/zyra-ui/latest/bin/zyx.py run src/App.zyx
+zyra run src/App.zyx
 ```
 
 ## Running Examples
