@@ -3,16 +3,13 @@
   "version": "0.1.0",
   "description": "Component-driven, reactive UI library and ZYX declarative markup for the Zyra programming language",
   "main": "src/lib.zy",
-  "bin": {
-    "zyx": "bin/zyx.cmd"
-  },
   "author": "Andrea Pallotta",
   "license": "MIT",
   "scripts": {
     "test": "zyra test tests/test_ui_suite.zy",
     "example:counter": "zyra run examples/counter.zy",
     "example:todo": "zyra run examples/todo.zy",
-    "example:zyx": "python bin/zyx.py run examples/declarative.zyx"
+    "example:zyx": "zyra run examples/declarative.zyx"
   },
   "dependencies": {}
 }
