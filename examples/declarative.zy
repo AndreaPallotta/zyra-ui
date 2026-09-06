@@ -1,0 +1,11 @@
+import "github.com/AndreaPallotta/zyra-ui"
+
+def CounterComponent(count_str: String): String {
+  return "<div class=\"card\"><h1 class=\"title\">Declarative ZYX Counter</h1><p class=\"count\">Current: " + (count_str) + "</p><button class=\"btn-primary\">+ Increment</button></div>"
+}
+
+def main(): Int {
+  const rendered = CounterComponent("42".to_string())
+  print(rendered)
+  return 0
+}

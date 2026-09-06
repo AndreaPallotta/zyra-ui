@@ -1,5 +1,5 @@
 # Codebase Map
-Generated: 2026-09-05 22:11:00
+Generated: 2026-09-06 09:19:00
 Commit: uncommitted / local
 
 This file is a compact index of the codebase for AI agents to understand project structure without full recursive file scans.
@@ -7,10 +7,13 @@ This file is a compact index of the codebase for AI agents to understand project
 ## File Index
 
 - `src/lib.zy`: Core Virtual DOM types (`VNode`, `StateEntry`), element constructors (`h`, `div`, `h1`, `p`, `button`, `input`), and HTML renderers (`render_html`, `render_page`).
-- `examples/counter.zy`: Interactive counter component demo showcasing card layout, buttons, and state rendering.
-- `examples/todo.zy`: Task list component demo demonstrating structured items and action triggers.
+- `bin/zyx.py`: Standalone ZYX preprocessor transpiling declarative JSX/HTML-like `.zyx` syntax into Zyra string expressions and component trees.
+- `bin/zyx.cmd`: Windows batch runner for `zyx.py`.
+- `examples/declarative.zyx`: Declarative ZYX component example.
+- `examples/counter.zy`: Interactive counter component demo.
+- `examples/todo.zy`: Task list component demo.
 - `tests/test_ui_suite.zy`: Unit test suite verifying VNode creation, HTML rendering, input element attributes, and page scaffolding.
-- `zyra.json`: Package manifest defining scripts (`test`, `example:counter`, `example:todo`) and library metadata.
+- `zyra.json`: Package manifest defining scripts and library metadata.
 - `README.md`: Library overview, installation instructions, quickstart guide, and examples.
 
 ## Key Symbol & Interface Index
