@@ -12,7 +12,10 @@
     "example:zyx": "zyra run examples/declarative.zyx",
     "example:dashboard": "zyra run examples/dashboard.zyx",
     "example:showcase": "zyra run examples/showcase.zyx",
-    "example:interactive": "zyra run examples/interactive.zyx"
+    "example:interactive": "zyra run examples/interactive.zyx",
+    "example:complete": "zyra run examples/complete_suite.zyx",
+    "example:landing": "zyra run examples/landing.zyx",
+    "example:auth": "zyra run examples/auth.zyx"
   },
   "dependencies": {}
 }

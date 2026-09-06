@@ -7,18 +7,19 @@ Inspired by the component and reactivity mental models of modern web frameworks,
 ## Features
 
 - **Declarative ZYX Syntax**: Write HTML/XML-like markup directly in `.zyx` files with `{expression}` interpolation and attribute binding.
-- **Built-in Design System**: Six built-in themes (`dark`, `light`, `nord`, `dracula`, `emerald`, `cyberpunk`) and custom CSS injection.
-- **Comprehensive Component Suite**:
-  - **Layout & Navigation**: `Navbar`, `Sidebar`, `Breadcrumb`, `Tabs`, `TabPanel`, `Container`, `Grid`, `Card`, `SectionHeader`, `Divider`
-  - **Data Display & Viz**: `Sparkline` (pure inline SVG), `StatCard`, `DataTable`, `Badge`, `Avatar`, `ProgressBar`
-  - **Disclosure & Feedback**: `Accordion`, `Toast`, `Alert`, `Tooltip`, `Dropdown`, `EmptyState`
-  - **Overlays**: `Modal`, `Drawer` (Slide-over panel)
-  - **Form Controls**: `Button`, `FormField`, `SelectField`, `TextareaField`, `CheckboxField`, `Pagination`
-  - **Loading States**: `Skeleton` (with shimmer animation in circle, text, or rect variants)
-  - **Developer Tools**: `CodeBlock` with language tags and clipboard copy
-- **Client Interactivity Micro-Runtime**: Zero-dependency vanilla runtime injected into `render_themed_page` that handles tabs, accordions, modals, drawers, and toasts directly in the browser.
-- **Utility CSS Classes**: Flexbox, CSS Grid, glassmorphism (`.glass`), shimmer animations (`.skeleton`), elevation glows (`.glow-primary`), and typography scales.
-- **High-Performance SSR**: Fast server-side and static HTML rendering with `render_themed_page` and `render_dashboard`.
+- **Built-in Design System**: Six built-in themes (`dark`, `light`, `nord`, `dracula`, `emerald`, `cyberpunk`), custom CSS injection, and responsive utility classes.
+- **Comprehensive Component Suite (50+ Primitives)**:
+  - **Layout & Structure**: `Navbar`, `Sidebar`, `Breadcrumb`, `Tabs`, `TabPanel`, `Container`, `Grid`, `Card`, `SectionHeader`, `Divider`, `HStack`, `VStack`, `AspectRatio`, `Splitter`, `Sticky`, `Masonry`.
+  - **Pure-SVG Data Visualization**: `BarChart`, `DonutChart`, `AreaChart`, `ProgressRing`, `Sparkline`.
+  - **Data Display & Typography**: `StatCard`, `KpiComparison`, `DataTable`, `Badge`, `Avatar`, `AvatarGroup`, `ProgressBar`, `Timeline`, `TreeView`, `Rating`, `DiffViewer`, `Kbd`, `Carousel`.
+  - **Form & Input Controls**: `Button`, `FormField`, `SelectField`, `TextareaField`, `CheckboxField`, `Switch`, `RadioGroup`, `Slider`, `SearchInput`, `NumberInput`, `PinInput`, `TagInput`, `DropZone`, `DatePicker`, `TimePicker`, `ColorPicker`, `Pagination`.
+  - **Navigation Systems**: `Stepper`, `CommandPalette`, `ContextMenu`, `TocNav`, `BottomNav`.
+  - **Overlays & Feedback**: `Modal`, `Drawer`, `Popover`, `ConfirmDialog`, `Banner`, `HoverCard`, `NotificationCenter`, `Lightbox`, `Accordion`, `Toast`, `Alert`, `Tooltip`, `Dropdown`, `EmptyState`.
+  - **Loading States & DevTools**: `Skeleton`, `CodeBlock`.
+  - **Production Page Templates**: `render_landing_page`, `render_auth_page`, `render_settings_page`, `render_docs_page`, `render_error_page`, `render_dashboard`, `render_themed_page`, `render_page`.
+  - **Utilities & Metadata**: `ThemeToggle`, `meta_tags`.
+- **Client Interactivity Micro-Runtime**: Zero-dependency vanilla runtime injected into `render_themed_page` (<3KB) that handles tabs, accordions, modals, drawers, toasts, popovers, command palettes, theme switching, and keyboard shortcuts (`Escape`, `Ctrl+K`).
+- **High-Performance SSR**: Sub-millisecond server-side and static HTML rendering compiling to native machine code.
 
 ## Installation
 
@@ -41,13 +42,22 @@ Or declare it in your `zyra.json`:
 ## Running Examples
 
 ```bash
-# Run interactive micro-runtime demo (tabs, drawer, modal, accordions, toast)
+# Run 100% complete component suite gallery
+zyra run example:complete
+
+# Run SaaS landing page demo
+zyra run example:landing
+
+# Run authentication portal demo
+zyra run example:auth
+
+# Run interactive micro-runtime demo
 zyra run example:interactive
 
-# Run SaaS analytics dashboard demo (with SVG sparklines and breadcrumbs)
+# Run cloud analytics dashboard demo
 zyra run example:dashboard
 
-# Run full component gallery showcase
+# Run component gallery showcase
 zyra run example:showcase
 
 # Run declarative ZYX counter demo
@@ -71,13 +81,31 @@ Pages rendered via `render_themed_page` automatically include client interactivi
 - `data-drawer-open="drawer-id"`: Slides open the target off-canvas drawer.
 - `data-drawer-close`: Closes the enclosing drawer panel.
 - `data-toast-close`: Dismisses and removes the toast banner.
+- `data-popover-toggle`: Toggles floating popover card visibility.
+- `data-cmd-open="palette-id"`: Opens the targeted command palette modal and focuses input.
+- `data-cmd-close`: Closes the enclosing command palette.
+- `data-theme-toggle`: Toggles document body theme attribute between dark and light.
+- Keyboard shortcuts: `Escape` closes all active overlays, and `Ctrl+K` / `Cmd+K` launches command palette.
 
-## Pure SVG Sparklines
+## Pure SVG Data Visualization Suite
 
-Render crisp inline metric trendlines without any charting dependencies:
+Render vector charts without any third-party JavaScript or NPM packages:
 
 ```zyra
-const trend = Sparkline("0,20 15,16 30,22 45,10 60,14 75,8 90,18 105,6 120,4", "success", 28)
+// Inline SVG bar chart
+const bar = BarChart("Jan,Feb,Mar,Apr,May,Jun", "30,55,40,75,90,110", 160, "primary")
+
+// Segmented SVG donut chart with center sum
+const donut = DonutChart("Compute,Memory,Storage", "50,30,20", 140)
+
+// Filled gradient area chart
+const area = AreaChart("0,100 80,60 160,80 240,30 320,10", "accent", 120)
+
+// Radial circular progress ring
+const ring = ProgressRing(78, 80, 8, "success")
+
+// Metric sparkline trend
+const spark = Sparkline("0,20 15,16 30,22 45,10 60,14", "primary", 24)
 ```
 
 ## Built-In Themes
@@ -93,7 +121,7 @@ const cyberpunk_theme = theme_cyberpunk()
 
 ## Testing
 
-Run the test suite using Zyra's built-in test runner:
+Run the full unit test suite:
 
 ```bash
 zyra test tests/test_ui_suite.zy

@@ -1,0 +1,13 @@
+import "../src/lib.zy"
+
+def AuthView(): String {
+  return render_auth_page("Sign In - Zyra Auth Portal".to_string(), "ZyraCloud".to_string(), "login".to_string(), theme_dark())
+}
+
+def main(): Int {
+  const html = AuthView()
+  print("[OK] Auth portal HTML generated successfully:")
+  print(format!("Total HTML document size: {} bytes", len(&html)))
+  print(&html[..280])
+  return 0
+}

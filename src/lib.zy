@@ -537,6 +537,147 @@ a:hover { text-decoration: underline; }
 .drawer-close:hover { color: var(--zy-text); }
 
 .sparkline-svg { display: inline-block; vertical-align: middle; overflow: visible; }
+
+.switch { position: relative; display: inline-flex; align-items: center; cursor: pointer; user-select: none; gap: 0.5rem; font-size: 0.875rem; font-weight: 500; color: var(--zy-text); }
+.switch-track { width: 44px; height: 24px; background: var(--zy-surface-hover); border-radius: 9999px; transition: all 0.2s; position: relative; border: 1px solid var(--zy-border); }
+.switch-track.active { background: var(--zy-primary); border-color: var(--zy-primary); }
+.switch-thumb { position: absolute; top: 2px; left: 2px; width: 18px; height: 18px; background: #ffffff; border-radius: 9999px; transition: all 0.2s; }
+.switch-track.active .switch-thumb { transform: translateX(20px); }
+.switch.disabled { opacity: 0.5; cursor: not-allowed; }
+
+.radio-group { display: flex; flex-direction: column; gap: 0.5rem; }
+.radio-label { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; color: var(--zy-text); cursor: pointer; }
+.radio-input { accent-color: var(--zy-primary); }
+
+.slider-container { display: flex; flex-direction: column; gap: 0.375rem; }
+.slider-input { width: 100%; -webkit-appearance: none; height: 6px; background: var(--zy-surface-hover); border-radius: 9999px; outline: none; }
+.slider-input::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; background: var(--zy-primary); border-radius: 50%; cursor: pointer; }
+
+.search-input-wrapper { position: relative; display: flex; align-items: center; width: 100%; }
+.search-icon { position: absolute; left: 0.75rem; color: var(--zy-text-muted); font-size: 0.875rem; pointer-events: none; }
+.search-input { width: 100%; padding: 0.5rem 0.75rem 0.5rem 2.25rem; background: var(--zy-surface); border: 1px solid var(--zy-border); border-radius: var(--zy-radius); color: var(--zy-text); font-size: 0.875rem; outline: none; }
+.search-input:focus { border-color: var(--zy-primary); }
+
+.number-input-group { display: inline-flex; align-items: center; border: 1px solid var(--zy-border); border-radius: var(--zy-radius); overflow: hidden; background: var(--zy-surface); }
+.number-input-btn { background: transparent; color: var(--zy-text); border: none; padding: 0.4rem 0.75rem; cursor: pointer; font-weight: bold; }
+.number-input-btn:hover { background: var(--zy-surface-hover); }
+.number-input-val { padding: 0.4rem 0.75rem; color: var(--zy-text); font-weight: 600; min-width: 40px; text-align: center; border-left: 1px solid var(--zy-border); border-right: 1px solid var(--zy-border); font-size: 0.875rem; }
+
+.pin-group { display: flex; gap: 0.5rem; }
+.pin-box { width: 44px; height: 50px; text-align: center; font-size: 1.25rem; font-weight: 700; background: var(--zy-surface); border: 1px solid var(--zy-border); border-radius: var(--zy-radius); color: var(--zy-text); outline: none; }
+.pin-box:focus { border-color: var(--zy-primary); box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2); }
+
+.tag-container { display: flex; flex-wrap: wrap; gap: 0.375rem; padding: 0.5rem; background: var(--zy-surface); border: 1px solid var(--zy-border); border-radius: var(--zy-radius); align-items: center; }
+.tag-chip { display: inline-flex; align-items: center; gap: 0.375rem; padding: 0.25rem 0.5rem; background: var(--zy-surface-hover); border-radius: calc(var(--zy-radius) - 2px); font-size: 0.75rem; font-weight: 600; color: var(--zy-text); }
+.tag-remove { cursor: pointer; opacity: 0.6; }
+.tag-remove:hover { opacity: 1; }
+
+.dropzone { border: 2px dashed var(--zy-border); border-radius: var(--zy-radius); padding: 2.5rem 1.5rem; text-align: center; background: var(--zy-surface); cursor: pointer; transition: border-color 0.2s; }
+.dropzone:hover { border-color: var(--zy-primary); background: var(--zy-surface-hover); }
+.dropzone-title { font-weight: 700; color: var(--zy-text); margin-bottom: 0.25rem; font-size: 1rem; }
+.dropzone-sub { font-size: 0.8125rem; color: var(--zy-text-muted); }
+
+.date-input { width: 100%; padding: 0.5rem 0.75rem; background: var(--zy-surface); border: 1px solid var(--zy-border); border-radius: var(--zy-radius); color: var(--zy-text); font-size: 0.875rem; }
+.color-picker-wrapper { display: inline-flex; align-items: center; gap: 0.5rem; }
+.color-swatch { width: 32px; height: 32px; border-radius: var(--zy-radius); border: 1px solid var(--zy-border); display: inline-block; }
+
+.hstack { display: flex; flex-direction: row; align-items: center; }
+.vstack { display: flex; flex-direction: column; }
+.aspect-ratio { position: relative; width: 100%; overflow: hidden; }
+.splitter-container { display: flex; width: 100%; overflow: hidden; border: 1px solid var(--zy-border); border-radius: var(--zy-radius); min-height: 200px; }
+.splitter-pane { overflow: auto; padding: 1rem; }
+.splitter-handle { width: 6px; background: var(--zy-border); cursor: col-resize; user-select: none; }
+.splitter-handle:hover { background: var(--zy-primary); }
+.sticky-top { position: sticky; top: 0; z-index: 100; }
+.sticky-bottom { position: sticky; bottom: 0; z-index: 100; }
+.masonry-container { column-gap: 1.5rem; }
+.masonry-item { break-inside: avoid; margin-bottom: 1.5rem; }
+
+.timeline { position: relative; padding-left: 2rem; display: flex; flex-direction: column; gap: 1.5rem; }
+.timeline-line { position: absolute; left: 0.625rem; top: 0.5rem; bottom: 0.5rem; width: 2px; background: var(--zy-border); }
+.timeline-item { position: relative; }
+.timeline-node { position: absolute; left: -2rem; top: 0.25rem; width: 1.25rem; height: 1.25rem; border-radius: 50%; background: var(--zy-surface); border: 3px solid var(--zy-primary); }
+.timeline-time { font-size: 0.75rem; color: var(--zy-text-muted); margin-bottom: 0.25rem; }
+.timeline-title { font-weight: 700; color: var(--zy-text); font-size: 0.9375rem; }
+.timeline-desc { font-size: 0.8125rem; color: var(--zy-text-muted); margin-top: 0.25rem; }
+
+.tree-view { list-style: none; padding-left: 1rem; font-size: 0.875rem; }
+.tree-item { padding: 0.25rem 0; color: var(--zy-text); cursor: pointer; display: flex; align-items: center; gap: 0.5rem; }
+.tree-item:hover { color: var(--zy-primary); }
+
+.avatar-group { display: inline-flex; align-items: center; }
+.avatar-group .avatar { margin-left: -0.5rem; border: 2px solid var(--zy-surface); }
+.avatar-group .avatar:first-child { margin-left: 0; }
+.avatar-overflow { display: inline-flex; align-items: center; justify-content: center; margin-left: -0.5rem; background: var(--zy-surface-hover); color: var(--zy-text); border: 2px solid var(--zy-surface); font-size: 0.75rem; font-weight: 700; border-radius: 50%; width: 2.25rem; height: 2.25rem; }
+
+.rating-stars { display: inline-flex; gap: 0.25rem; color: #fbbf24; font-size: 1.125rem; }
+.diff-container { font-family: monospace; font-size: 0.8125rem; background: var(--zy-surface); border: 1px solid var(--zy-border); border-radius: var(--zy-radius); overflow-x: auto; }
+.diff-line { padding: 0.2rem 0.75rem; display: flex; }
+.diff-del { background: rgba(239, 68, 68, 0.15); color: #f87171; }
+.diff-add { background: rgba(16, 185, 129, 0.15); color: #34d399; }
+
+.kbd { display: inline-flex; align-items: center; justify-content: center; padding: 0.15rem 0.4rem; font-size: 0.75rem; font-family: monospace; background: var(--zy-surface-hover); border: 1px solid var(--zy-border); border-bottom-width: 2px; border-radius: 4px; color: var(--zy-text); font-weight: 600; line-height: 1; }
+.kpi-card { background: var(--zy-surface); border: 1px solid var(--zy-border); border-radius: var(--zy-radius); padding: 1.25rem; }
+.kpi-current { font-size: 1.75rem; font-weight: 800; color: var(--zy-text); }
+.kpi-meta { display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--zy-text-muted); margin-top: 0.75rem; padding-top: 0.5rem; border-top: 1px solid var(--zy-border); }
+
+.carousel-viewport { overflow: hidden; position: relative; width: 100%; border-radius: var(--zy-radius); }
+.carousel-track { display: flex; transition: transform 0.3s ease; }
+.carousel-slide { min-width: 100%; box-sizing: border-box; }
+
+.stepper { display: flex; align-items: center; justify-content: space-between; width: 100%; margin: 1rem 0; }
+.step-item { display: flex; flex-direction: column; align-items: center; position: relative; flex: 1; text-align: center; }
+.step-circle { width: 2rem; height: 2rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.8125rem; background: var(--zy-surface-hover); color: var(--zy-text-muted); border: 2px solid var(--zy-border); z-index: 2; }
+.step-item.active .step-circle { background: var(--zy-primary); color: #ffffff; border-color: var(--zy-primary); }
+.step-item.completed .step-circle { background: var(--zy-success); color: #ffffff; border-color: var(--zy-success); }
+.step-label { margin-top: 0.5rem; font-size: 0.75rem; font-weight: 600; color: var(--zy-text-muted); }
+.step-item.active .step-label { color: var(--zy-text); font-weight: 700; }
+.step-connector { position: absolute; top: 1rem; left: 50%; width: 100%; height: 2px; background: var(--zy-border); z-index: 1; }
+.step-item:last-child .step-connector { display: none; }
+
+.cmd-palette-backdrop { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.7); z-index: 2000; display: flex; align-items: flex-start; justify-content: center; padding-top: 15vh; }
+.cmd-palette-card { width: 100%; max-width: 580px; background: var(--zy-surface); border: 1px solid var(--zy-border); border-radius: var(--zy-radius); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); overflow: hidden; }
+.cmd-palette-input { width: 100%; padding: 1rem 1.25rem; background: transparent; border: none; border-bottom: 1px solid var(--zy-border); color: var(--zy-text); font-size: 1rem; outline: none; }
+.cmd-palette-list { list-style: none; max-height: 320px; overflow-y: auto; padding: 0.5rem; margin: 0; }
+.cmd-palette-item { display: flex; justify-content: space-between; align-items: center; padding: 0.65rem 0.85rem; border-radius: calc(var(--zy-radius) - 2px); color: var(--zy-text); cursor: pointer; font-size: 0.875rem; }
+.cmd-palette-item:hover { background: var(--zy-surface-hover); color: var(--zy-primary); }
+
+.context-menu { display: none; position: fixed; z-index: 1500; min-width: 160px; background: var(--zy-surface); border: 1px solid var(--zy-border); border-radius: var(--zy-radius); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); padding: 0.35rem; list-style: none; }
+.toc-nav { list-style: none; border-left: 2px solid var(--zy-border); padding-left: 0.75rem; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.8125rem; }
+.toc-link { color: var(--zy-text-muted); text-decoration: none; }
+.toc-link:hover, .toc-link.active { color: var(--zy-primary); font-weight: 600; }
+
+.bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; height: 60px; background: var(--zy-surface); border-top: 1px solid var(--zy-border); display: flex; justify-content: space-around; align-items: center; z-index: 100; }
+.bottom-nav-item { display: flex; flex-direction: column; align-items: center; gap: 0.25rem; color: var(--zy-text-muted); font-size: 0.75rem; text-decoration: none; }
+.bottom-nav-item.active { color: var(--zy-primary); font-weight: 700; }
+
+.popover-wrapper { position: relative; display: inline-block; }
+.popover-card { display: none; position: absolute; bottom: calc(100% + 0.5rem); left: 50%; transform: translateX(-50%); background: var(--zy-surface); border: 1px solid var(--zy-border); border-radius: var(--zy-radius); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); padding: 1rem; width: 240px; z-index: 100; font-size: 0.875rem; color: var(--zy-text); }
+.popover-wrapper.open .popover-card { display: block; }
+
+.confirm-dialog { max-width: 440px; }
+.banner { width: 100%; padding: 0.75rem 1.5rem; display: flex; align-items: center; justify-content: space-between; font-size: 0.875rem; font-weight: 500; border-bottom: 1px solid var(--zy-border); }
+.banner-primary { background: rgba(99, 102, 241, 0.15); color: var(--zy-primary); border-color: rgba(99, 102, 241, 0.3); }
+.banner-warning { background: rgba(245, 158, 11, 0.15); color: var(--zy-warning); border-color: rgba(245, 158, 11, 0.3); }
+.hovercard-wrapper { position: relative; display: inline-block; }
+.hovercard-content { display: none; position: absolute; top: calc(100% + 0.5rem); left: 0; min-width: 280px; background: var(--zy-surface); border: 1px solid var(--zy-border); border-radius: var(--zy-radius); box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3); padding: 1rem; z-index: 120; }
+.hovercard-wrapper:hover .hovercard-content { display: block; }
+.notif-center { position: relative; display: inline-block; }
+.notif-badge { position: absolute; top: -4px; right: -4px; background: var(--zy-danger); color: #ffffff; font-size: 0.625rem; font-weight: 800; border-radius: 9999px; width: 16px; height: 16px; display: flex; align-items: center; justify-content: center; }
+.lightbox-backdrop { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.9); z-index: 3000; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; }
+.lightbox-img { max-width: 90vw; max-height: 80vh; object-fit: contain; border-radius: var(--zy-radius); }
+.lightbox-caption { color: #ffffff; margin-top: 1rem; font-size: 0.875rem; }
+
+.truncate { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.line-clamp-1 { display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
+.line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.line-clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.text-gradient { background: linear-gradient(135deg, var(--zy-primary), var(--zy-accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.border-gradient { border: 2px solid transparent; border-image: linear-gradient(135deg, var(--zy-primary), var(--zy-accent)) 1; }
+
+@media (max-width: 640px) { .sm\:hidden { display: none !important; } .sm\:flex-col { flex-direction: column !important; } }
+@media (min-width: 768px) { .md\:flex { display: flex !important; } .md\:grid-2 { display: grid !important; grid-template-columns: repeat(2, 1fr) !important; } }
+@media (min-width: 1024px) { .lg\:grid-4 { display: grid !important; grid-template-columns: repeat(4, 1fr) !important; } }
 "#;
 
   var out = vars + base_rules
@@ -905,6 +1046,516 @@ def Sparkline(points_str: String, color: String, height: Int): String {
   return "<svg class=\"sparkline-svg\" width=\"120\" height=\"" + &h_str + "\" viewBox=\"0 0 120 " + &h_str + "\"><polyline points=\"" + &points_str + "\" fill=\"none\" stroke=\"" + &stroke + "\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" /></svg>"
 }
 
+def parse_int_str(s: String): Int {
+  var v = 0
+  const parts = str.split(&s, "")
+  for ch in parts {
+    var d = -1
+    if ch == "0" { d = 0 }
+    if ch == "1" { d = 1 }
+    if ch == "2" { d = 2 }
+    if ch == "3" { d = 3 }
+    if ch == "4" { d = 4 }
+    if ch == "5" { d = 5 }
+    if ch == "6" { d = 6 }
+    if ch == "7" { d = 7 }
+    if ch == "8" { d = 8 }
+    if ch == "9" { d = 9 }
+    if d >= 0 {
+      v = v * 10
+      v = v + d
+    }
+  }
+  return v
+}
+
+def Switch(name: String, label: String, is_checked: Bool, disabled: Bool): String {
+  const active_cls = if is_checked { "switch-track active" } else { "switch-track" }
+  const dis_cls = if disabled { "switch disabled" } else { "switch" }
+  const chk_attr = if is_checked { " checked" } else { "" }
+  const dis_attr = if disabled { " disabled" } else { "" }
+  return "<label class=\"" + dis_cls + "\"><input type=\"checkbox\" name=\"" + &name + "\" value=\"true\" style=\"display:none;\"" + chk_attr + dis_attr + " /><div class=\"" + active_cls + "\"><div class=\"switch-thumb\"></div></div><span>" + &label + "</span></label>"
+}
+
+def RadioGroup(name: String, label: String, options_csv: String, selected_val: String): String {
+  var html = "<div class=\"form-group\">".to_string()
+  if len(&label) > 0 {
+    html = html + "<label class=\"form-label\">" + &label + "</label>"
+  }
+  html = html + "<div class=\"radio-group\">"
+  const opts = str.split(&options_csv, ",")
+  for opt in opts {
+    const o = trim(&opt)
+    if len(&o) > 0 {
+      const chk = if o == selected_val { " checked" } else { "" }
+      html = html + "<label class=\"radio-label\"><input class=\"radio-input\" type=\"radio\" name=\"" + &name + "\" value=\"" + &o + "\"" + chk + " /><span>" + &o + "</span></label>"
+    }
+  }
+  html = html + "</div></div>"
+  return html
+}
+
+def Slider(name: String, label: String, min_val: Int, max_val: Int, current_val: Int): String {
+  const min_s = format!("{}", min_val)
+  const max_s = format!("{}", max_val)
+  const val_s = format!("{}", current_val)
+  var html = "<div class=\"slider-container\">".to_string()
+  if len(&label) > 0 {
+    html = html + "<div class=\"flex justify-between\"><label class=\"form-label\" for=\"" + &name + "\">" + &label + "</label><span class=\"text-xs text-muted\">" + &val_s + "</span></div>"
+  }
+  html = html + "<input class=\"slider-input\" id=\"" + &name + "\" name=\"" + &name + "\" type=\"range\" min=\"" + &min_s + "\" max=\"" + &max_s + "\" value=\"" + &val_s + "\" /></div>"
+  return html
+}
+
+def SearchInput(name: String, placeholder: String, value: String): String {
+  return "<div class=\"search-input-wrapper\"><span class=\"search-icon\">&#128269;</span><input class=\"search-input\" id=\"" + &name + "\" name=\"" + &name + "\" type=\"search\" placeholder=\"" + &placeholder + "\" value=\"" + &value + "\" /></div>"
+}
+
+def NumberInput(name: String, label: String, min_val: Int, max_val: Int, val: Int): String {
+  const val_s = format!("{}", val)
+  const min_s = format!("{}", min_val)
+  const max_s = format!("{}", max_val)
+  var html = "<div class=\"form-group\">".to_string()
+  if len(&label) > 0 {
+    html = html + "<label class=\"form-label\" for=\"" + &name + "\">" + &label + "</label>"
+  }
+  html = html + "<div class=\"number-input-group\"><button type=\"button\" class=\"number-input-btn\" onclick=\"var el=this.parentNode.querySelector('input'); el.stepDown(); el.dispatchEvent(new Event('change'));\">-</button><input id=\"" + &name + "\" name=\"" + &name + "\" type=\"number\" class=\"number-input-val\" value=\"" + &val_s + "\" min=\"" + &min_s + "\" max=\"" + &max_s + "\" /><button type=\"button\" class=\"number-input-btn\" onclick=\"var el=this.parentNode.querySelector('input'); el.stepUp(); el.dispatchEvent(new Event('change'));\">+</button></div></div>"
+  return html
+}
+
+def PinInput(name: String, length: Int): String {
+  var html = "<div class=\"pin-group\" data-pin-group=\"" + &name + "\">".to_string()
+  for i in 1..=length {
+    const idx_s = format!("{}", i)
+    html = html + "<input class=\"pin-box\" type=\"text\" maxlength=\"1\" data-pin-index=\"" + &idx_s + "\" />"
+  }
+  html = html + "</div>"
+  return html
+}
+
+def TagInput(name: String, label: String, tags_csv: String, placeholder: String): String {
+  var html = "<div class=\"form-group\">".to_string()
+  if len(&label) > 0 {
+    html = html + "<label class=\"form-label\">" + &label + "</label>"
+  }
+  html = html + "<div class=\"tag-container\">"
+  const tags = str.split(&tags_csv, ",")
+  for t in tags {
+    const tag = trim(&t)
+    if len(&tag) > 0 {
+      html = html + "<span class=\"tag-chip\"><span>" + &tag + "</span><span class=\"tag-remove\" onclick=\"this.parentElement.remove()\">&times;</span></span>"
+    }
+  }
+  html = html + "<input class=\"form-input\" style=\"flex:1; border:none; padding:0.25rem; min-width:80px;\" placeholder=\"" + &placeholder + "\" name=\"" + &name + "\" /></div></div>"
+  return html
+}
+
+def DropZone(name: String, title: String, subtitle: String, accept_exts: String): String {
+  return "<div class=\"dropzone\" onclick=\"this.querySelector('input').click()\"><input type=\"file\" name=\"" + &name + "\" accept=\"" + &accept_exts + "\" style=\"display:none;\" /><div class=\"dropzone-title\">" + &title + "</div><div class=\"dropzone-sub\">" + &subtitle + " (" + &accept_exts + ")</div></div>"
+}
+
+def DatePicker(name: String, label: String, val: String): String {
+  var html = "<div class=\"form-group\">".to_string()
+  if len(&label) > 0 {
+    html = html + "<label class=\"form-label\" for=\"" + &name + "\">" + &label + "</label>"
+  }
+  html = html + "<input class=\"date-input\" id=\"" + &name + "\" name=\"" + &name + "\" type=\"date\" value=\"" + &val + "\" /></div>"
+  return html
+}
+
+def TimePicker(name: String, label: String, val: String): String {
+  var html = "<div class=\"form-group\">".to_string()
+  if len(&label) > 0 {
+    html = html + "<label class=\"form-label\" for=\"" + &name + "\">" + &label + "</label>"
+  }
+  html = html + "<input class=\"date-input\" id=\"" + &name + "\" name=\"" + &name + "\" type=\"time\" value=\"" + &val + "\" /></div>"
+  return html
+}
+
+def ColorPicker(name: String, label: String, hex_val: String): String {
+  var html = "<div class=\"form-group\">".to_string()
+  if len(&label) > 0 {
+    html = html + "<label class=\"form-label\" for=\"" + &name + "\">" + &label + "</label>"
+  }
+  html = html + "<div class=\"color-picker-wrapper\"><input type=\"color\" id=\"" + &name + "\" name=\"" + &name + "\" value=\"" + &hex_val + "\" style=\"border:none; width:36px; height:36px; cursor:pointer; background:none;\" /><input class=\"form-input\" style=\"width:110px;\" value=\"" + &hex_val + "\" readonly /></div></div>"
+  return html
+}
+
+def HStack(spacing_cls: String, content: String): String {
+  const cls = "hstack " + &spacing_cls
+  return "<div class=\"" + cls + "\">" + &content + "</div>"
+}
+
+def VStack(spacing_cls: String, content: String): String {
+  const cls = "vstack " + &spacing_cls
+  return "<div class=\"" + cls + "\">" + &content + "</div>"
+}
+
+def AspectRatio(ratio: String, content: String): String {
+  const style = "aspect-ratio: " + &ratio + ";"
+  return "<div class=\"aspect-ratio\" style=\"" + style + "\">" + &content + "</div>"
+}
+
+def Splitter(left_content: String, right_content: String, initial_split_pct: Int): String {
+  const left_style = format!("flex: 0 0 {}%;", initial_split_pct)
+  return "<div class=\"splitter-container\"><div class=\"splitter-pane\" style=\"" + left_style + "\">" + &left_content + "</div><div class=\"splitter-handle\"></div><div class=\"splitter-pane\" style=\"flex: 1;\">" + &right_content + "</div></div>"
+}
+
+def Sticky(content: String, is_bottom: Bool): String {
+  const cls = if is_bottom { "sticky-bottom" } else { "sticky-top" }
+  return "<div class=\"" + cls + "\">" + &content + "</div>"
+}
+
+def Masonry(cols: Int, content: String): String {
+  const style = format!("column-count: {};", cols)
+  return "<div class=\"masonry-container\" style=\"" + style + "\">" + &content + "</div>"
+}
+
+def Timeline(events_csv: String): String {
+  var html = "<div class=\"timeline\"><div class=\"timeline-line\"></div>".to_string()
+  const events = str.split(&events_csv, ";")
+  for ev in events {
+    const item = trim(&ev)
+    if len(&item) > 0 {
+      const parts = str.split(&item, ":")
+      const title = if len(&parts) > 0 { trim(&parts[0]) } else { "".to_string() }
+      const desc = if len(&parts) > 1 { trim(&parts[1]) } else { "".to_string() }
+      var time_str = "".to_string()
+      if len(&parts) > 2 {
+        time_str = trim(&parts[2])
+        if len(&parts) > 3 {
+          for pi in 3..len(&parts) {
+            time_str = time_str + ":" + &trim(&parts[pi as usize])
+          }
+        }
+      }
+      html = html + "<div class=\"timeline-item\"><div class=\"timeline-node\"></div>"
+      if len(&time_str) > 0 {
+        html = html + "<div class=\"timeline-time\">" + &time_str + "</div>"
+      }
+      html = html + "<div class=\"timeline-title\">" + &title + "</div>"
+      if len(&desc) > 0 {
+        html = html + "<div class=\"timeline-desc\">" + &desc + "</div>"
+      }
+      html = html + "</div>"
+    }
+  }
+  html = html + "</div>"
+  return html
+}
+
+def TreeView(nodes_csv: String): String {
+  var html = "<ul class=\"tree-view\">".to_string()
+  const nodes = str.split(&nodes_csv, ";")
+  for n in nodes {
+    const item = trim(&n)
+    if len(&item) > 0 {
+      const parts = str.split(&item, ":")
+      const name = trim(&parts[0])
+      const kind = if len(&parts) > 1 { trim(&parts[1]) } else { "file".to_string() }
+      const icon = if kind == "folder" { "&#128193;" } else { "&#128196;" }
+      html = html + "<li class=\"tree-item\"><span>" + icon + "</span><span>" + &name + "</span></li>"
+    }
+  }
+  html = html + "</ul>"
+  return html
+}
+
+def AvatarGroup(names_csv: String, max_display: Int, size: String): String {
+  var html = "<div class=\"avatar-group\">".to_string()
+  const names = str.split(&names_csv, ",")
+  var shown = 0
+  var total = 0
+  for n in &names {
+    const name = trim(n)
+    if len(&name) > 0 {
+      total = total + 1
+      if shown < max_display {
+        html = html + &Avatar(name, size.clone())
+        shown = shown + 1
+      }
+    }
+  }
+  if total > max_display {
+    const diff = total - max_display
+    const diff_s = format!("+{}", diff)
+    html = html + "<div class=\"avatar-overflow\">" + &diff_s + "</div>"
+  }
+  html = html + "</div>"
+  return html
+}
+
+def Rating(stars: Int, max_stars: Int): String {
+  var html = "<div class=\"rating-stars\">".to_string()
+  for i in 1..=max_stars {
+    const symbol = if i <= stars { "&#9733;" } else { "&#9734;" }
+    html = html + "<span>" + symbol + "</span>"
+  }
+  html = html + "</div>"
+  return html
+}
+
+def DiffViewer(removed_lines_csv: String, added_lines_csv: String): String {
+  var html = "<div class=\"diff-container\">".to_string()
+  const rems = str.split(&removed_lines_csv, ";")
+  for r in rems {
+    const line = trim(&r)
+    if len(&line) > 0 {
+      html = html + "<div class=\"diff-line diff-del\">- " + &line + "</div>"
+    }
+  }
+  const adds = str.split(&added_lines_csv, ";")
+  for a in adds {
+    const line = trim(&a)
+    if len(&line) > 0 {
+      html = html + "<div class=\"diff-line diff-add\">+ " + &line + "</div>"
+    }
+  }
+  html = html + "</div>"
+  return html
+}
+
+def Kbd(key_label: String): String {
+  return "<kbd class=\"kbd\">" + &key_label + "</kbd>"
+}
+
+def KpiComparison(title: String, current_val: String, baseline_val: String, target_val: String, delta_pct: String, is_positive: Bool): String {
+  const sign = if is_positive { "+" } else { "" }
+  const delta_cls = if is_positive { "delta-positive" } else { "delta-negative" }
+  return "<div class=\"kpi-card\"><div class=\"text-xs text-muted uppercase font-bold\">" + &title + "</div><div class=\"flex items-center justify-between mt-1\"><div class=\"kpi-current\">" + &current_val + "</div><div class=\"text-sm font-bold " + delta_cls + "\">" + sign + &delta_pct + "%</div></div><div class=\"kpi-meta\"><span>Baseline: " + &baseline_val + "</span><span>Target: " + &target_val + "</span></div></div>"
+}
+
+def Carousel(items_html_csv: String): String {
+  var slides = "".to_string()
+  const items = str.split(&items_html_csv, ";")
+  for it in items {
+    const item = trim(&it)
+    if len(&item) > 0 {
+      slides = slides + "<div class=\"carousel-slide\">" + &item + "</div>"
+    }
+  }
+  return "<div class=\"carousel-viewport\"><div class=\"carousel-track\">" + slides + "</div></div>"
+}
+
+def BarChart(labels_csv: String, values_csv: String, height: Int, color: String): String {
+  const fill_col = if contains(&color, "#") || contains(&color, "rgb") { color } else { "var(--zy-" + &color + ")" }
+  const h_str = format!("{}", height)
+  const labels = str.split(&labels_csv, ",")
+  const vals = str.split(&values_csv, ",")
+  const count = len(&vals)
+  var max_v = 1
+  for v in &vals {
+    const num = parse_int_str(trim(v))
+    if num > max_v { max_v = num }
+  }
+  const max_h = height - 40
+  const slot_w = if count > 0 { 280 / count } else { 40 }
+  const bar_w = if slot_w > 12 { slot_w - 8 } else { slot_w }
+  var bars_svg = "".to_string()
+  var i = 0
+  for v in &vals {
+    const val_num = parse_int_str(trim(v))
+    const bar_h = (val_num * max_h) / max_v
+    const x = 20 + i * slot_w
+    const y = (height - 25) - bar_h
+    const label_text = if i < len(&labels) { trim(&labels[i as usize]) } else { "".to_string() }
+    const x_str = format!("{}", x)
+    const y_str = format!("{}", y)
+    const bw_str = format!("{}", bar_w)
+    const bh_str = format!("{}", bar_h)
+    const lx_str = format!("{}", x + bar_w / 2)
+    const ly_str = format!("{}", height - 8)
+    bars_svg = bars_svg + "<rect x=\"" + &x_str + "\" y=\"" + &y_str + "\" width=\"" + &bw_str + "\" height=\"" + &bh_str + "\" fill=\"" + &fill_col + "\" rx=\"4\" />"
+    bars_svg = bars_svg + "<text x=\"" + &lx_str + "\" y=\"" + &ly_str + "\" text-anchor=\"middle\" font-size=\"11\" fill=\"var(--zy-text-muted)\">" + &label_text + "</text>"
+    i = i + 1
+  }
+  return "<svg class=\"chart-barchart\" width=\"100%\" height=\"" + &h_str + "\" viewBox=\"0 0 320 " + &h_str + "\">" + bars_svg + "</svg>"
+}
+
+def DonutChart(labels_csv: String, values_csv: String, size: Int): String {
+  const s_str = format!("{}", size)
+  const center = size / 2
+  const c_str = format!("{}", center)
+  const radius = center - 18
+  const r_str = format!("{}", radius)
+  const circum = (2 * 314 * radius) / 100
+  const vals = str.split(&values_csv, ",")
+  var total = 0
+  for v in &vals {
+    total = total + parse_int_str(trim(v))
+  }
+  if total <= 0 { total = 1 }
+  const colors = str.split("primary,accent,success,warning,danger", ",")
+  var circles = "".to_string()
+  var offset = 0
+  var idx = 0
+  for v in &vals {
+    const num = parse_int_str(trim(v))
+    const seg_len = (num * circum) / total
+    const color_key = if idx < len(&colors) { colors[idx as usize].to_string() } else { "primary".to_string() }
+    const stroke_col = "var(--zy-" + &color_key + ")"
+    const dash = format!("{} {}", seg_len, circum - seg_len)
+    const off_str = format!("{}", -offset)
+    circles = circles + "<circle cx=\"" + &c_str + "\" cy=\"" + &c_str + "\" r=\"" + &r_str + "\" fill=\"none\" stroke=\"" + &stroke_col + "\" stroke-width=\"16\" stroke-dasharray=\"" + &dash + "\" stroke-dashoffset=\"" + &off_str + "\" transform=\"rotate(-90 " + &c_str + " " + &c_str + ")\" />"
+    offset = offset + seg_len
+    idx = idx + 1
+  }
+  const cy_txt = format!("{}", center + 5)
+  const tot_txt = format!("{}", total)
+  var out = "<svg class=\"chart-donutchart\" width=\"".to_string() + &s_str + "\" height=\"" + &s_str + "\" viewBox=\"0 0 " + &s_str + " " + &s_str + "\">" + &circles + "<text x=\"" + &c_str + "\" y=\"" + &cy_txt + "\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"700\" fill=\"var(--zy-text)\">" + &tot_txt + "</text></svg>"
+  return out
+}
+
+def AreaChart(points_str: String, color: String, height: Int): String {
+  const stroke_col = if contains(&color, "#") || contains(&color, "rgb") { color } else { "var(--zy-" + &color + ")" }
+  const h_str = format!("{}", height)
+  const poly = "0," + &h_str + " " + &points_str + " 320," + &h_str
+  return "<svg class=\"chart-areachart\" width=\"100%\" height=\"" + &h_str + "\" viewBox=\"0 0 320 " + &h_str + "\"><polygon points=\"" + &poly + "\" fill=\"" + &stroke_col + "\" opacity=\"0.2\" /><polyline points=\"" + &points_str + "\" fill=\"none\" stroke=\"" + &stroke_col + "\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" /></svg>"
+}
+
+def ProgressRing(percentage: Int, size: Int, stroke_width: Int, color: String): String {
+  const s_str = format!("{}", size)
+  const center = size / 2
+  const c_str = format!("{}", center)
+  const radius = (size - stroke_width) / 2
+  const r_str = format!("{}", radius)
+  const sw_str = format!("{}", stroke_width)
+  const circum = (2 * 314 * radius) / 100
+  const offset = circum - (circum * percentage) / 100
+  const dash = format!("{}", circum)
+  const off_str = format!("{}", offset)
+  const stroke_col = if contains(&color, "#") || contains(&color, "rgb") { color } else { "var(--zy-" + &color + ")" }
+  const cy_txt = format!("{}", center + 5)
+  const pct_txt = format!("{}%", percentage)
+  var out = "<svg width=\"".to_string() + &s_str + "\" height=\"" + &s_str + "\" viewBox=\"0 0 " + &s_str + " " + &s_str + "\"><circle cx=\"" + &c_str + "\" cy=\"" + &c_str + "\" r=\"" + &r_str + "\" stroke=\"var(--zy-surface-hover)\" stroke-width=\"" + &sw_str + "\" fill=\"none\" /><circle cx=\"" + &c_str + "\" cy=\"" + &c_str + "\" r=\"" + &r_str + "\" stroke=\"" + &stroke_col + "\" stroke-width=\"" + &sw_str + "\" fill=\"none\" stroke-dasharray=\"" + &dash + "\" stroke-dashoffset=\"" + &off_str + "\" stroke-linecap=\"round\" transform=\"rotate(-90 " + &c_str + " " + &c_str + ")\" /><text x=\"" + &c_str + "\" y=\"" + &cy_txt + "\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"700\" fill=\"var(--zy-text)\">" + &pct_txt + "</text></svg>"
+  return out
+}
+
+def Stepper(steps_csv: String, active_step_index: Int): String {
+  var html = "<div class=\"stepper\">".to_string()
+  const steps = str.split(&steps_csv, ",")
+  var idx = 1
+  for s in steps {
+    const step = trim(&s)
+    if len(&step) > 0 {
+      const cls = if idx < active_step_index { "step-item completed" } else { if idx == active_step_index { "step-item active" } else { "step-item" } }
+      const circle_content = if idx < active_step_index { "&#10003;".to_string() } else { format!("{}", idx) }
+      html = html + "<div class=\"" + cls + "\"><div class=\"step-connector\"></div><div class=\"step-circle\">" + &circle_content + "</div><div class=\"step-label\">" + &step + "</div></div>"
+      idx = idx + 1
+    }
+  }
+  html = html + "</div>"
+  return html
+}
+
+def CommandPalette(modal_id: String, placeholder: String, items_csv: String): String {
+  var list_html = "<ul class=\"cmd-palette-list\">".to_string()
+  const items = str.split(&items_csv, ";")
+  for it in items {
+    const item = trim(&it)
+    if len(&item) > 0 {
+      const parts = str.split(&item, ":")
+      const title = if len(&parts) > 0 { trim(&parts[0]) } else { "".to_string() }
+      const key = if len(&parts) > 1 { trim(&parts[1]) } else { "".to_string() }
+      list_html = list_html + "<li class=\"cmd-palette-item\"><span>" + &title + "</span><kbd class=\"kbd\">" + &key + "</kbd></li>"
+    }
+  }
+  list_html = list_html + "</ul>"
+  return "<div class=\"cmd-palette-backdrop\" id=\"" + &modal_id + "\" style=\"display:none;\" data-cmd-palette><div class=\"cmd-palette-card\"><input class=\"cmd-palette-input\" placeholder=\"" + &placeholder + "\" data-cmd-input />" + list_html + "</div></div>"
+}
+
+def ContextMenu(menu_id: String, items_csv: String): String {
+  var list_html = "<ul class=\"context-menu\" id=\"" + &menu_id + "\">".to_string()
+  const items = str.split(&items_csv, ",")
+  for it in items {
+    const item = trim(&it)
+    if len(&item) > 0 {
+      list_html = list_html + "<li class=\"dropdown-item\">" + &item + "</li>"
+    }
+  }
+  list_html = list_html + "</ul>"
+  return list_html
+}
+
+def TocNav(headers_csv: String): String {
+  var html = "<nav class=\"toc-nav\">".to_string()
+  const items = str.split(&headers_csv, ",")
+  for it in items {
+    const item = trim(&it)
+    if len(&item) > 0 {
+      const slug = "section-" + &str.lower(&item)
+      html = html + "<a class=\"toc-link\" href=\"#" + &slug + "\">" + &item + "</a>"
+    }
+  }
+  html = html + "</nav>"
+  return html
+}
+
+def BottomNav(items_csv: String, active_item: String): String {
+  var html = "<nav class=\"bottom-nav\">".to_string()
+  const items = str.split(&items_csv, ",")
+  for it in items {
+    const item = trim(&it)
+    if len(&item) > 0 {
+      const cls = if item == active_item { "bottom-nav-item active" } else { "bottom-nav-item" }
+      html = html + "<a class=\"" + cls + "\" href=\"#\"><span>" + &item + "</span></a>"
+    }
+  }
+  html = html + "</nav>"
+  return html
+}
+
+def Popover(trigger_html: String, content_html: String): String {
+  return "<div class=\"popover-wrapper\"><div class=\"popover-trigger\" data-popover-toggle>" + &trigger_html + "</div><div class=\"popover-card\">" + &content_html + "</div></div>"
+}
+
+def ConfirmDialog(dialog_id: String, title: String, message: String, confirm_label: String, is_danger: Bool): String {
+  const btn_var = if is_danger { "danger" } else { "primary" }
+  return "<div class=\"modal-backdrop\" id=\"" + &dialog_id + "\" style=\"display:none;\"><div class=\"modal-card confirm-dialog\"><div class=\"modal-title\">" + &title + "</div><div class=\"modal-body\">" + &message + "</div><div class=\"modal-footer\"><button class=\"btn btn-secondary btn-sm\" data-modal-close>Cancel</button><button class=\"btn btn-" + btn_var + " btn-sm\">" + &confirm_label + "</button></div></div></div>"
+}
+
+def Banner(title: String, message: String, action_label: String, variant: String): String {
+  return "<div class=\"banner banner-" + &variant + "\"><div><span class=\"font-bold\">" + &title + ": </span><span>" + &message + "</span></div><button class=\"btn btn-sm btn-" + &variant + "\">" + &action_label + "</button></div>"
+}
+
+def HoverCard(trigger_html: String, preview_html: String): String {
+  return "<div class=\"hovercard-wrapper\">" + &trigger_html + "<div class=\"hovercard-content\">" + &preview_html + "</div></div>"
+}
+
+def NotificationCenter(unread_count: Int, notifications_csv: String): String {
+  const unread_s = format!("{}", unread_count)
+  var items_html = "<div class=\"p-2 border-b font-bold text-xs text-muted\">NOTIFICATIONS</div>".to_string()
+  const notifs = str.split(&notifications_csv, ";")
+  for n in notifs {
+    const notif = trim(&n)
+    if len(&notif) > 0 {
+      items_html = items_html + "<div class=\"p-2 text-xs border-b\">" + &notif + "</div>"
+    }
+  }
+  return "<div class=\"notif-center dropdown\"><button class=\"btn btn-ghost btn-sm relative\"><span style=\"font-size:1.2rem;\">&#128276;</span><span class=\"notif-badge\">" + &unread_s + "</span></button><div class=\"dropdown-menu\" style=\"min-width:260px;\">" + items_html + "</div></div>"
+}
+
+def Lightbox(modal_id: String, image_url: String, caption: String): String {
+  return "<div class=\"lightbox-backdrop\" id=\"" + &modal_id + "\" style=\"display:none;\" onclick=\"this.style.display='none';\"><img class=\"lightbox-img\" src=\"" + &image_url + "\" alt=\"" + &caption + "\" /><div class=\"lightbox-caption\">" + &caption + "</div></div>"
+}
+
+def ThemeToggle(): String {
+  return "<button class=\"btn btn-ghost btn-sm theme-toggle-btn\" data-theme-toggle title=\"Toggle Light/Dark Theme\">&#9788; / &#9790;</button>".to_string()
+}
+
+def meta_tags(title: String, description: String, og_image: String, url: String): String {
+  var tags = "<meta name=\"description\" content=\"" + &description + "\">\n".to_string()
+  tags = tags + "  <meta property=\"og:title\" content=\"" + &title + "\">\n"
+  tags = tags + "  <meta property=\"og:description\" content=\"" + &description + "\">\n"
+  tags = tags + "  <meta property=\"og:image\" content=\"" + &og_image + "\">\n"
+  tags = tags + "  <meta property=\"og:url\" content=\"" + &url + "\">\n"
+  tags = tags + "  <meta name=\"twitter:card\" content=\"summary_large_image\">\n"
+  tags = tags + "  <meta name=\"twitter:title\" content=\"" + &title + "\">\n"
+  tags = tags + "  <meta name=\"twitter:description\" content=\"" + &description + "\">\n"
+  tags = tags + "  <meta name=\"twitter:image\" content=\"" + &og_image + "\">"
+  return tags
+}
+
 def render_themed_page(title: String, body_html: String, theme: Theme, custom_css: String): String {
   const head = "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>" + title + "</title>\n"
   const styles = "  <style>\n" + generate_stylesheet(theme, custom_css) + "\n  </style>\n</head>\n<body>\n"
@@ -961,6 +1612,49 @@ document.addEventListener('DOMContentLoaded', function() {
       t && t.remove();
     });
   });
+  document.querySelectorAll('[data-popover-toggle]').forEach(function(el) {
+    el.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var wrap = el.closest('.popover-wrapper');
+      wrap && wrap.classList.toggle('open');
+    });
+  });
+  document.querySelectorAll('[data-cmd-open]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var p = document.getElementById(btn.getAttribute('data-cmd-open'));
+      p && (p.style.display = 'flex');
+      var inp = p ? p.querySelector('input') : null;
+      inp && inp.focus();
+    });
+  });
+  document.querySelectorAll('[data-cmd-close]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var p = btn.closest('.cmd-palette-backdrop');
+      p && (p.style.display = 'none');
+    });
+  });
+  document.querySelectorAll('[data-theme-toggle]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var body = document.body;
+      var cur = body.getAttribute('data-theme') || 'dark';
+      var nxt = cur === 'dark' ? 'light' : 'dark';
+      body.setAttribute('data-theme', nxt);
+    });
+  });
+  document.addEventListener('keydown', function(e) {
+    var isEsc = e.key === 'Escape';
+    var isCtrlK = (e.ctrlKey || e.metaKey) && e.key === 'k';
+    isEsc && document.querySelectorAll('.modal-backdrop, .drawer-backdrop, .cmd-palette-backdrop, .lightbox-backdrop').forEach(function(el) {
+      el.style.display = 'none';
+    });
+    isEsc && document.querySelectorAll('.popover-wrapper.open').forEach(function(el) {
+      el.classList.remove('open');
+    });
+    isCtrlK && e.preventDefault();
+    var firstCmd = document.querySelector('.cmd-palette-backdrop');
+    isCtrlK && firstCmd && (firstCmd.style.display = 'flex');
+    isCtrlK && firstCmd && firstCmd.querySelector('input') && firstCmd.querySelector('input').focus();
+  });
 });
   </script>
 "#;
@@ -977,4 +1671,54 @@ def render_dashboard(title: String, brand: String, nav_links_csv: String, active
   const nav = Navbar(brand, nav_links_csv, active_nav, "<button class=\"btn btn-primary btn-sm\">+ New Project</button>".to_string())
   const layout = "<div class=\"min-h-screen\">" + nav + "<main class=\"container\">" + content_html + "</main></div>"
   return render_themed_page(title, layout, theme, "".to_string())
+}
+
+def render_auth_page(title: String, brand: String, form_type: String, theme: Theme): String {
+  const is_signup = form_type == "signup"
+  const card_title = if is_signup { "Create your account" } else { "Welcome back" }
+  const submit_label = if is_signup { "Sign Up" } else { "Sign In" }
+  var fields = FormField("email".to_string(), "Email Address".to_string(), "email".to_string(), "user@domain.com".to_string(), "".to_string(), "".to_string())
+  fields = fields + FormField("password".to_string(), "Password".to_string(), "password".to_string(), "••••••••".to_string(), "".to_string(), "".to_string())
+  if is_signup {
+    fields = fields + FormField("confirm".to_string(), "Confirm Password".to_string(), "password".to_string(), "••••••••".to_string(), "".to_string(), "".to_string())
+  }
+  const submit_btn = Button(submit_label.to_string(), "primary".to_string(), "md".to_string(), false)
+  const card_body = "<div class=\"text-center mb-4\"><h1 class=\"text-2xl font-bold\">" + card_title + "</h1><p class=\"text-xs text-muted mt-1\">Enter your credentials to access " + &brand + "</p></div><form class=\"vstack gap-3\">" + fields + submit_btn + "</form>"
+  const card = "<div style=\"width: 100%; max-width: 400px; margin: auto;\">" + Card("".to_string(), "".to_string(), card_body, "".to_string()) + "</div>"
+  const layout = "<div class=\"min-h-screen flex items-center justify-center p-4\">" + card + "</div>"
+  return render_themed_page(title, layout, theme, "".to_string())
+}
+
+def render_landing_page(title: String, brand: String, hero_title: String, hero_sub: String, features_html: String, pricing_html: String, theme: Theme): String {
+  const nav = Navbar(brand.clone(), "Features,Pricing,Docs,Changelog".to_string(), "Features".to_string(), "<button class=\"btn btn-primary btn-sm\">Get Started</button>".to_string())
+  const hero = "<section class=\"text-center py-16\"><h1 class=\"text-4xl font-bold mb-4 text-gradient\">" + &hero_title + "</h1><p class=\"text-muted max-w-xl mx-auto mb-6 text-lg\">" + &hero_sub + "</p><div class=\"flex justify-center gap-3\"><button class=\"btn btn-primary btn-lg\">Start Free Trial</button><button class=\"btn btn-secondary btn-lg\">Book Demo</button></div></section>"
+  const feat_section = "<section class=\"py-12\"><div class=\"text-center mb-8\"><h2 class=\"text-2xl font-bold\">Powerful Capabilities</h2><p class=\"text-muted text-sm\">Everything you need to deliver high-performance applications.</p></div>" + features_html + "</section>"
+  const price_section = "<section class=\"py-12\"><div class=\"text-center mb-8\"><h2 class=\"text-2xl font-bold\">Simple, Predictable Pricing</h2><p class=\"text-muted text-sm\">Transparent plans built for scaling teams.</p></div>" + pricing_html + "</section>"
+  const footer = "<footer class=\"border-t py-8 text-center text-xs text-muted\"><p>&copy; 2026 " + &brand + ". Built with Zyra UI.</p></footer>"
+  const body = "<div class=\"min-h-screen\">" + nav + "<main class=\"container\">" + hero + feat_section + price_section + "</main>" + footer + "</div>"
+  return render_themed_page(title, body, theme, "".to_string())
+}
+
+def render_settings_page(title: String, brand: String, active_tab: String, content_html: String, theme: Theme): String {
+  const nav = Navbar(brand, "Overview,Analytics,Settings".to_string(), "Settings".to_string(), Avatar("Admin".to_string(), "sm".to_string()))
+  const tabs = "General,Security,Billing,Notifications,API Keys"
+  const tabs_html = Tabs(tabs.to_string(), active_tab, content_html)
+  const body = "<div class=\"min-h-screen\">" + nav + "<main class=\"container py-8\"><div class=\"mb-6\"><h1 class=\"text-2xl font-bold\">Workspace Settings</h1><p class=\"text-muted text-sm\">Manage your account configuration, security, and team billing.</p></div>" + tabs_html + "</main></div>"
+  return render_themed_page(title, body, theme, "".to_string())
+}
+
+def render_docs_page(title: String, brand: String, sidebar_csv: String, active_article: String, article_html: String, toc_csv: String, theme: Theme): String {
+  const nav = Navbar(brand, "Documentation,Guides,API,Community".to_string(), "Documentation".to_string(), SearchInput("docs_search".to_string(), "Search documentation...".to_string(), "".to_string()))
+  const sidebar = "<aside style=\"flex: 0 0 240px;\">" + Sidebar("Index".to_string(), sidebar_csv, active_article) + "</aside>"
+  const article = "<article style=\"flex: 1; padding: 0 2rem;\">" + article_html + "</article>"
+  const toc = "<aside style=\"flex: 0 0 200px;\"><div class=\"text-xs font-bold text-muted mb-2\">ON THIS PAGE</div>" + TocNav(toc_csv) + "</aside>"
+  const main_layout = "<div class=\"flex py-6\" style=\"min-height: calc(100vh - 65px);\">" + sidebar + article + toc + "</div>"
+  const body = "<div class=\"min-h-screen\">" + nav + "<main class=\"container\">" + main_layout + "</main></div>"
+  return render_themed_page(title, body, theme, "".to_string())
+}
+
+def render_error_page(code: Int, title: String, message: String, theme: Theme): String {
+  const code_s = format!("{}", code)
+  const body = "<div class=\"min-h-screen flex flex-col items-center justify-center text-center p-4\"><div class=\"text-6xl font-black text-gradient mb-2\">" + code_s + "</div><h1 class=\"text-2xl font-bold mb-2\">" + &title + "</h1><p class=\"text-muted max-w-md mb-6\">" + &message + "</p><a href=\"/\" class=\"btn btn-primary btn-md\">Return to Dashboard</a></div>"
+  return render_themed_page(title, body, theme, "".to_string())
 }

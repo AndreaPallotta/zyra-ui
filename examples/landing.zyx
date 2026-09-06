@@ -1,0 +1,23 @@
+import "../src/lib.zy"
+
+def LandingView(): String {
+  const feat1 = Card("Bare-Metal Performance".to_string(), "Zero runtime overhead".to_string(), "<p class=\"text-sm text-muted\">Transpiles cleanly to native Rust and compiles to standalone native binaries with sub-millisecond execution times.</p>", "".to_string())
+  const feat2 = Card("Zero-Dependency Micro-Runtime".to_string(), "<3KB client footprint".to_string(), "<p class=\"text-sm text-muted\">Built-in tab switching, accordion toggling, modals, drawers, command palettes, and dark mode without any NPM packages.</p>", "".to_string())
+  const feat3 = Card("Pure-SVG Visualization".to_string(), "Direct vector rendering".to_string(), "<p class=\"text-sm text-muted\">High-performance inline SVG BarCharts, DonutCharts, AreaCharts, and ProgressRings with full design system theming.</p>", "".to_string())
+  const feat_cards = Grid(3, feat1 + &feat2 + &feat3)
+
+  const price1 = Card("Developer".to_string(), "Free forever".to_string(), "<div class=\"text-3xl font-bold my-4\">$0</div><p class=\"text-sm text-muted mb-4\">Single developer and open-source project licenses.</p><button class=\"btn btn-secondary w-full\">Start Free</button>", "".to_string())
+  const price2 = Card("Team".to_string(), "Best for scaling companies".to_string(), "<div class=\"text-3xl font-bold my-4 text-primary\">$49 <span class=\"text-xs text-muted\">/mo</span></div><p class=\"text-sm text-muted mb-4\">Up to 25 engineers, premium component templates, and dedicated support.</p><button class=\"btn btn-primary w-full\">Get Started</button>", "".to_string())
+  const price3 = Card("Enterprise".to_string(), "Custom deployments".to_string(), "<div class=\"text-3xl font-bold my-4\">$299 <span class=\"text-xs text-muted\">/mo</span></div><p class=\"text-sm text-muted mb-4\">Unlimited seats, air-gapped support, and custom design tokens.</p><button class=\"btn btn-secondary w-full\">Contact Sales</button>", "".to_string())
+  const price_cards = Grid(3, price1 + &price2 + &price3)
+
+  return render_landing_page("Zyra UI - High-Performance Pure UI Framework".to_string(), "ZyraUI".to_string(), "Build Ultra-Fast Modern Web Applications in Pure Zyra".to_string(), "A high-performance component suite, declarative virtual DOM, pure SVG data visualization, and instant client interactivity with zero third-party dependencies.".to_string(), feat_cards, price_cards, theme_dark())
+}
+
+def main(): Int {
+  const html = LandingView()
+  print("[OK] Landing page HTML generated successfully:")
+  print(format!("Total HTML document size: {} bytes", len(&html)))
+  print(&html[..280])
+  return 0
+}

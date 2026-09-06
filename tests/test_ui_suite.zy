@@ -307,3 +307,340 @@ def test_drawer_sparkline_and_micro_runtime(): Int {
   print("[PASS] Drawer, Sparkline, and Interactive Micro-Runtime verified")
   return 0
 }
+
+@test
+def test_form_extended_controls(): Int {
+  const sw_on = Switch("notifications".to_string(), "Enable Notifications".to_string(), true, false)
+  if (!contains(sw_on, "switch-track active") || !contains(sw_on, "checked") || !contains(sw_on, "Enable Notifications") || contains(sw_on, "disabled")) {
+    print("[FAIL] Switch active rendering failed")
+    return 1
+  }
+
+  const sw_dis = Switch("auto_deploy".to_string(), "Auto Deployment".to_string(), false, true)
+  if (!contains(sw_dis, "switch disabled") || !contains(sw_dis, "disabled") || contains(sw_dis, "switch-track active")) {
+    print("[FAIL] Switch disabled rendering failed")
+    return 1
+  }
+
+  const radio = RadioGroup("plan".to_string(), "Select Tier".to_string(), "Free,Pro,Enterprise".to_string(), "Pro".to_string())
+  if (!contains(radio, "radio-group") || !contains(radio, "value=\"Free\"") || !contains(radio, "value=\"Pro\" checked") || !contains(radio, "value=\"Enterprise\"")) {
+    print("[FAIL] RadioGroup rendering failed")
+    return 1
+  }
+
+  const slider = Slider("volume".to_string(), "Sound Volume".to_string(), 0, 100, 75)
+  if (!contains(slider, "slider-container") || !contains(slider, "type=\"range\"") || !contains(slider, "min=\"0\"") || !contains(slider, "max=\"100\"") || !contains(slider, "value=\"75\"")) {
+    print("[FAIL] Slider rendering failed")
+    return 1
+  }
+
+  const search = SearchInput("q".to_string(), "Search components...".to_string(), "badge".to_string())
+  if (!contains(search, "search-input-wrapper") || !contains(search, "placeholder=\"Search components...\"") || !contains(search, "value=\"badge\"")) {
+    print("[FAIL] SearchInput rendering failed")
+    return 1
+  }
+
+  const num_input = NumberInput("replicas".to_string(), "Pod Replicas".to_string(), 1, 10, 3)
+  if (!contains(num_input, "number-input-group") || !contains(num_input, "type=\"number\"") || !contains(num_input, "value=\"3\"") || !contains(num_input, "stepDown()") || !contains(num_input, "stepUp()")) {
+    print("[FAIL] NumberInput rendering failed")
+    return 1
+  }
+
+  const pin = PinInput("otp".to_string(), 4)
+  if (!contains(pin, "data-pin-group=\"otp\"") || !contains(pin, "data-pin-index=\"1\"") || !contains(pin, "data-pin-index=\"4\"")) {
+    print("[FAIL] PinInput rendering failed")
+    return 1
+  }
+
+  const tags = TagInput("skills".to_string(), "Skill Tags".to_string(), "Rust,Zyra,WASM".to_string(), "Add skill...".to_string())
+  if (!contains(tags, "tag-container") || !contains(tags, "Rust") || !contains(tags, "Zyra") || !contains(tags, "WASM") || !contains(tags, "placeholder=\"Add skill...\"")) {
+    print("[FAIL] TagInput rendering failed")
+    return 1
+  }
+
+  const drop = DropZone("avatar_file".to_string(), "Upload avatar image".to_string(), "PNG or SVG up to 2MB".to_string(), ".png,.svg".to_string())
+  if (!contains(drop, "class=\"dropzone\"") || !contains(drop, "Upload avatar image") || !contains(drop, "PNG or SVG up to 2MB") || !contains(drop, "accept=\".png,.svg\"")) {
+    print("[FAIL] DropZone rendering failed")
+    return 1
+  }
+
+  const date_p = DatePicker("release_date".to_string(), "Target Date".to_string(), "2026-10-01".to_string())
+  if (!contains(date_p, "type=\"date\"") || !contains(date_p, "value=\"2026-10-01\"")) {
+    print("[FAIL] DatePicker rendering failed")
+    return 1
+  }
+
+  const time_p = TimePicker("event_time".to_string(), "Event Time".to_string(), "14:30".to_string())
+  if (!contains(time_p, "type=\"time\"") || !contains(time_p, "value=\"14:30\"")) {
+    print("[FAIL] TimePicker rendering failed")
+    return 1
+  }
+
+  const color_p = ColorPicker("theme_color".to_string(), "Brand Accent".to_string(), "#6366f1".to_string())
+  if (!contains(color_p, "type=\"color\"") || !contains(color_p, "value=\"#6366f1\"") || !contains(color_p, "color-picker-wrapper")) {
+    print("[FAIL] ColorPicker rendering failed")
+    return 1
+  }
+
+  print("[PASS] Extended form controls verified")
+  return 0
+}
+
+@test
+def test_layout_primitives(): Int {
+  const hstack = HStack("gap-4 items-center".to_string(), "<span>Left</span><span>Right</span>".to_string())
+  if (!contains(hstack, "class=\"hstack gap-4 items-center\"") || !contains(hstack, "<span>Left</span>")) {
+    print("[FAIL] HStack rendering failed")
+    return 1
+  }
+
+  const vstack = VStack("gap-2".to_string(), "<div>Item 1</div><div>Item 2</div>".to_string())
+  if (!contains(vstack, "class=\"vstack gap-2\"") || !contains(vstack, "<div>Item 1</div>")) {
+    print("[FAIL] VStack rendering failed")
+    return 1
+  }
+
+  const aspect = AspectRatio("16/9".to_string(), "<iframe src=\"https://example.com\"></iframe>".to_string())
+  if (!contains(aspect, "class=\"aspect-ratio\"") || !contains(aspect, "style=\"aspect-ratio: 16/9;\"")) {
+    print("[FAIL] AspectRatio rendering failed")
+    return 1
+  }
+
+  const split = Splitter("<p>Tree</p>".to_string(), "<p>Editor</p>".to_string(), 30)
+  if (!contains(split, "splitter-container") || !contains(split, "flex: 0 0 30%;") || !contains(split, "splitter-handle") || !contains(split, "<p>Editor</p>")) {
+    print("[FAIL] Splitter rendering failed")
+    return 1
+  }
+
+  const sticky_t = Sticky("<nav>Sticky Nav</nav>".to_string(), false)
+  const sticky_b = Sticky("<footer>Sticky Footer</footer>".to_string(), true)
+  if (!contains(sticky_t, "class=\"sticky-top\"") || !contains(sticky_b, "class=\"sticky-bottom\"")) {
+    print("[FAIL] Sticky rendering failed")
+    return 1
+  }
+
+  const masonry = Masonry(3, "<div class=\"card\">Card 1</div><div class=\"card\">Card 2</div>".to_string())
+  if (!contains(masonry, "class=\"masonry-container\"") || !contains(masonry, "style=\"column-count: 3;\"")) {
+    print("[FAIL] Masonry rendering failed")
+    return 1
+  }
+
+  print("[PASS] Layout primitives verified")
+  return 0
+}
+
+@test
+def test_data_display_extended(): Int {
+  const timeline = Timeline("Build:Image compiled:10:00 AM;Deploy:Container rolled out:10:05 AM".to_string())
+  if (!contains(timeline, "class=\"timeline\"") || !contains(timeline, "timeline-node") || !contains(timeline, "Image compiled") || !contains(timeline, "10:05 AM")) {
+    print("[FAIL] Timeline rendering failed")
+    return 1
+  }
+
+  const tree = TreeView("src:folder;src/lib.zy:file;tests:folder;tests/test_ui.zy:file".to_string())
+  if (!contains(tree, "class=\"tree-view\"") || !contains(tree, "tree-item") || !contains(tree, "src/lib.zy") || !contains(tree, "&#128193;") || !contains(tree, "&#128196;")) {
+    print("[FAIL] TreeView rendering failed")
+    return 1
+  }
+
+  const av_group = AvatarGroup("Alice,Bob,Charlie,Dave,Eve".to_string(), 3, "md".to_string())
+  if (!contains(av_group, "avatar-group") || !contains(av_group, "avatar-overflow") || !contains(av_group, "+2")) {
+    print("[FAIL] AvatarGroup rendering failed")
+    return 1
+  }
+
+  const rating = Rating(4, 5)
+  if (!contains(rating, "rating-stars") || !contains(rating, "&#9733;") || !contains(rating, "&#9734;")) {
+    print("[FAIL] Rating rendering failed")
+    return 1
+  }
+
+  const diff = DiffViewer("old_line = 1".to_string(), "new_line = 2".to_string())
+  if (!contains(diff, "diff-container") || !contains(diff, "diff-del") || !contains(diff, "- old_line = 1") || !contains(diff, "diff-add") || !contains(diff, "+ new_line = 2")) {
+    print("[FAIL] DiffViewer rendering failed")
+    return 1
+  }
+
+  const kbd = Kbd("Ctrl+K".to_string())
+  if (!contains(kbd, "class=\"kbd\"") || !contains(kbd, "Ctrl+K")) {
+    print("[FAIL] Kbd rendering failed")
+    return 1
+  }
+
+  const kpi = KpiComparison("Server Throughput".to_string(), "24,500 req/s".to_string(), "18,000 req/s".to_string(), "30,000 req/s".to_string(), "36.1".to_string(), true)
+  if (!contains(kpi, "kpi-card") || !contains(kpi, "Server Throughput") || !contains(kpi, "24,500 req/s") || !contains(kpi, "Baseline: 18,000 req/s") || !contains(kpi, "+36.1%")) {
+    print("[FAIL] KpiComparison rendering failed")
+    return 1
+  }
+
+  const carousel = Carousel("Slide 1;Slide 2;Slide 3".to_string())
+  if (!contains(carousel, "carousel-viewport") || !contains(carousel, "carousel-track") || !contains(carousel, "carousel-slide") || !contains(carousel, "Slide 1")) {
+    print("[FAIL] Carousel rendering failed")
+    return 1
+  }
+
+  print("[PASS] Extended data display components verified")
+  return 0
+}
+
+@test
+def test_svg_charts(): Int {
+  const bar = BarChart("Jan,Feb,Mar,Apr".to_string(), "20,45,60,80".to_string(), 160, "primary".to_string())
+  if (!contains(bar, "class=\"chart-barchart\"") || !contains(bar, "viewBox=\"0 0 320 160\"") || !contains(bar, "<rect") || !contains(bar, "fill=\"var(--zy-primary)\"") || !contains(bar, "Jan") || !contains(bar, "Apr")) {
+    print("[FAIL] BarChart rendering failed")
+    return 1
+  }
+
+  const donut = DonutChart("Web,API,DB".to_string(), "40,35,25".to_string(), 140)
+  if (!contains(donut, "class=\"chart-donutchart\"") || !contains(donut, "viewBox=\"0 0 140 140\"") || !contains(donut, "<circle") || !contains(donut, "stroke-dasharray") || !contains(donut, "100")) {
+    print("[FAIL] DonutChart rendering failed")
+    return 1
+  }
+
+  const area = AreaChart("0,100 80,60 160,80 240,30 320,10".to_string(), "accent".to_string(), 120)
+  if (!contains(area, "class=\"chart-areachart\"") || !contains(area, "<polygon") || !contains(area, "<polyline") || !contains(area, "stroke=\"var(--zy-accent)\"")) {
+    print("[FAIL] AreaChart rendering failed")
+    return 1
+  }
+
+  const ring = ProgressRing(78, 80, 8, "success".to_string())
+  if (!contains(ring, "width=\"80\"") || !contains(ring, "stroke-dasharray") || !contains(ring, "stroke=\"var(--zy-success)\"") || !contains(ring, "78%")) {
+    print("[FAIL] ProgressRing rendering failed")
+    return 1
+  }
+
+  print("[PASS] Pure-SVG chart components verified")
+  return 0
+}
+
+@test
+def test_navigation_extended(): Int {
+  const stepper = Stepper("Account,Workspace,Invite,Launch".to_string(), 2)
+  if (!contains(stepper, "class=\"stepper\"") || !contains(stepper, "step-item completed") || !contains(stepper, "step-item active") || !contains(stepper, "Workspace") || !contains(stepper, "&#10003;")) {
+    print("[FAIL] Stepper rendering failed")
+    return 1
+  }
+
+  const cmd = CommandPalette("global-cmd".to_string(), "Search commands...".to_string(), "New Cluster:Ctrl+N;Deploy:Ctrl+D".to_string())
+  if (!contains(cmd, "id=\"global-cmd\"") || !contains(cmd, "data-cmd-palette") || !contains(cmd, "placeholder=\"Search commands...\"") || !contains(cmd, "New Cluster") || !contains(cmd, "Ctrl+N")) {
+    print("[FAIL] CommandPalette rendering failed")
+    return 1
+  }
+
+  const ctx_menu = ContextMenu("row-context-menu".to_string(), "Edit,Clone,Delete".to_string())
+  if (!contains(ctx_menu, "id=\"row-context-menu\"") || !contains(ctx_menu, "class=\"context-menu\"") || !contains(ctx_menu, "Clone")) {
+    print("[FAIL] ContextMenu rendering failed")
+    return 1
+  }
+
+  const toc = TocNav("Introduction,Installation,Configuration,API".to_string())
+  if (!contains(toc, "class=\"toc-nav\"") || !contains(toc, "href=\"#section-introduction\"") || !contains(toc, "Configuration")) {
+    print("[FAIL] TocNav rendering failed")
+    return 1
+  }
+
+  const bot_nav = BottomNav("Home,Search,Alerts,Profile".to_string(), "Home".to_string())
+  if (!contains(bot_nav, "class=\"bottom-nav\"") || !contains(bot_nav, "bottom-nav-item active") || !contains(bot_nav, "Profile")) {
+    print("[FAIL] BottomNav rendering failed")
+    return 1
+  }
+
+  print("[PASS] Extended navigation components verified")
+  return 0
+}
+
+@test
+def test_overlays_extended(): Int {
+  const popover = Popover("<button>Info</button>".to_string(), "<p>Popover detailed info</p>".to_string())
+  if (!contains(popover, "class=\"popover-wrapper\"") || !contains(popover, "data-popover-toggle") || !contains(popover, "popover-card") || !contains(popover, "Popover detailed info")) {
+    print("[FAIL] Popover rendering failed")
+    return 1
+  }
+
+  const confirm = ConfirmDialog("delete-confirm".to_string(), "Delete Service".to_string(), "Are you sure you want to permanently delete this service?".to_string(), "Delete".to_string(), true)
+  if (!contains(confirm, "id=\"delete-confirm\"") || !contains(confirm, "confirm-dialog") || !contains(confirm, "btn-danger") || !contains(confirm, "data-modal-close")) {
+    print("[FAIL] ConfirmDialog rendering failed")
+    return 1
+  }
+
+  const banner = Banner("Scheduled Maintenance".to_string(), "System upgrade tonight at 02:00 UTC".to_string(), "View Status".to_string(), "warning".to_string())
+  if (!contains(banner, "banner banner-warning") || !contains(banner, "Scheduled Maintenance") || !contains(banner, "View Status")) {
+    print("[FAIL] Banner rendering failed")
+    return 1
+  }
+
+  const hover = HoverCard("<a href=\"#\">@andreapallotta</a>".to_string(), "<div class=\"user-preview\">Staff Engineer</div>".to_string())
+  if (!contains(hover, "hovercard-wrapper") || !contains(hover, "hovercard-content") || !contains(hover, "Staff Engineer")) {
+    print("[FAIL] HoverCard rendering failed")
+    return 1
+  }
+
+  const notif = NotificationCenter(3, "Cluster healthy;Build succeeded;Deployment complete".to_string())
+  if (!contains(notif, "notif-center") || !contains(notif, "notif-badge") || !contains(notif, "3") || !contains(notif, "Cluster healthy")) {
+    print("[FAIL] NotificationCenter rendering failed")
+    return 1
+  }
+
+  const lightbox = Lightbox("diagram-zoom".to_string(), "https://example.com/arch.png".to_string(), "System Architecture Diagram".to_string())
+  if (!contains(lightbox, "id=\"diagram-zoom\"") || !contains(lightbox, "lightbox-backdrop") || !contains(lightbox, "src=\"https://example.com/arch.png\"") || !contains(lightbox, "System Architecture Diagram")) {
+    print("[FAIL] Lightbox rendering failed")
+    return 1
+  }
+
+  print("[PASS] Extended overlay components verified")
+  return 0
+}
+
+@test
+def test_utilities_and_page_templates(): Int {
+  const toggle = ThemeToggle()
+  if (!contains(toggle, "data-theme-toggle") || !contains(toggle, "theme-toggle-btn")) {
+    print("[FAIL] ThemeToggle rendering failed")
+    return 1
+  }
+
+  const meta = meta_tags("Zyra UI System".to_string(), "Fast, ultra-light pure UI framework".to_string(), "https://example.com/og.png".to_string(), "https://example.com".to_string())
+  if (!contains(meta, "og:title") || !contains(meta, "Zyra UI System") || !contains(meta, "og:image") || !contains(meta, "twitter:card")) {
+    print("[FAIL] meta_tags generation failed")
+    return 1
+  }
+
+  const auth_p = render_auth_page("Sign In".to_string(), "ZyraCloud".to_string(), "login".to_string(), theme_dark())
+  if (!contains(auth_p, "Welcome back") || !contains(auth_p, "ZyraCloud") || !contains(auth_p, "Sign In") || !contains(auth_p, "Email Address")) {
+    print("[FAIL] render_auth_page failed")
+    return 1
+  }
+
+  const landing_p = render_landing_page("Zyra Platform".to_string(), "Zyra".to_string(), "Next Generation Systems".to_string(), "Ultra-low latency microservices".to_string(), "<div>Features</div>".to_string(), "<div>Pricing</div>".to_string(), theme_dark())
+  if (!contains(landing_p, "Next Generation Systems") || !contains(landing_p, "Simple, Predictable Pricing") || !contains(landing_p, "Start Free Trial")) {
+    print("[FAIL] render_landing_page failed")
+    return 1
+  }
+
+  const settings_p = render_settings_page("Settings".to_string(), "Zyra".to_string(), "General".to_string(), "<p>General settings panel</p>".to_string(), theme_dark())
+  if (!contains(settings_p, "Workspace Settings") || !contains(settings_p, "General settings panel")) {
+    print("[FAIL] render_settings_page failed")
+    return 1
+  }
+
+  const docs_p = render_docs_page("Zyra Docs".to_string(), "Zyra".to_string(), "Overview,Architecture,Components".to_string(), "Overview".to_string(), "<h1>Overview</h1>".to_string(), "Summary,Installation".to_string(), theme_dark())
+  if (!contains(docs_p, "ON THIS PAGE") || !contains(docs_p, "<h1>Overview</h1>") || !contains(docs_p, "docs_search")) {
+    print("[FAIL] render_docs_page failed")
+    return 1
+  }
+
+  const error_p = render_error_page(404, "Page Not Found".to_string(), "The requested resource could not be found.".to_string(), theme_dark())
+  if (!contains(error_p, "404") || !contains(error_p, "Page Not Found") || !contains(error_p, "Return to Dashboard")) {
+    print("[FAIL] render_error_page failed")
+    return 1
+  }
+
+  const themed = render_themed_page("Interactive Test".to_string(), "<p>Test</p>".to_string(), theme_dark(), "".to_string())
+  if (!contains(themed, "data-popover-toggle") || !contains(themed, "data-cmd-open") || !contains(themed, "data-theme-toggle") || !contains(themed, "Escape")) {
+    print("[FAIL] Enhanced micro-runtime handlers missing from render_themed_page")
+    return 1
+  }
+
+  print("[PASS] Utilities and application page templates verified")
+  return 0
+}
