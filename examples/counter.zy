@@ -1,0 +1,25 @@
+import "../src/lib.zy"
+
+def render_counter(count_text: String) : String {
+  const heading = h1("counter-title", "Zyra Reactive Counter")
+  const value_display = p("counter-val", "Current Count: " + count_text)
+  const btn_inc = button("btn-primary", "+ Increment")
+  const btn_dec = button("btn-secondary", "- Decrement")
+
+  var card_content = render_html(heading)
+  card_content = card_content + &render_html(value_display)
+  card_content = card_content + &render_html(btn_inc)
+  card_content = card_content + &render_html(btn_dec)
+
+  const card = div("card", card_content)
+  const full_page = render_page("Counter Example", render_html(card))
+  return full_page
+}
+
+def main(): Int {
+  print("Rendering Zyra UI Counter Component...")
+  const initial_html = render_counter("0".to_string())
+  print(initial_html)
+  print("Counter rendered successfully.")
+  return 0
+}

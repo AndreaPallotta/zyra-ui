@@ -1,0 +1,14 @@
+{
+  "name": "zyra-ui",
+  "version": "0.1.0",
+  "description": "Component-driven, reactive UI library for the Zyra programming language (inspired by Vue & React)",
+  "main": "src/lib.zy",
+  "author": "Andrea Pallotta",
+  "license": "MIT",
+  "scripts": {
+    "test": "zyra test tests/test_ui_suite.zy",
+    "example:counter": "zyra run examples/counter.zy",
+    "example:todo": "zyra run examples/todo.zy"
+  },
+  "dependencies": {}
+}

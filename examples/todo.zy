@@ -1,0 +1,25 @@
+import "../src/lib.zy"
+
+def render_todo(todo1: String, todo2: String) : String {
+  const header = h1("todo-title", "Zyra Task Tracker")
+  const item1 = p("todo-item", "1. " + todo1)
+  const item2 = p("todo-item", "2. " + todo2)
+  const add_btn = button("btn-primary", "Add Task")
+
+  var list_content = render_html(header)
+  list_content = list_content + &render_html(item1)
+  list_content = list_content + &render_html(item2)
+  list_content = list_content + &render_html(add_btn)
+
+  const card = div("card", list_content)
+  const full_page = render_page("Todo Tracker", render_html(card))
+  return full_page
+}
+
+def main(): Int {
+  print("Rendering Zyra UI Todo Component...")
+  const page = render_todo("Build zyra-ui library".to_string(), "Run integration tests".to_string())
+  print(page)
+  print("Todo app rendered successfully.")
+  return 0
+}

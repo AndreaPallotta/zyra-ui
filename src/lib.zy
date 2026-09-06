@@ -1,0 +1,76 @@
+// zyra-ui - Component and Virtual DOM library for Zyra
+
+struct VNode {
+  tag: String,
+  classes: String,
+  attrs: String,
+  text: String,
+  children_count: Int
+}
+
+struct StateEntry {
+  key: String,
+  value: String
+}
+
+def h(tag: String, classes: String, text: String): VNode {
+  return VNode {
+    tag: tag.to_string(),
+    classes: classes.to_string(),
+    attrs: "".to_string(),
+    text: text.to_string(),
+    children_count: 0
+  }
+}
+
+def div(classes: String, text: String): VNode {
+  return h("div", classes, text)
+}
+
+def h1(classes: String, text: String): VNode {
+  return h("h1", classes, text)
+}
+
+def p(classes: String, text: String): VNode {
+  return h("p", classes, text)
+}
+
+def button(classes: String, label: String): VNode {
+  return h("button", classes, label)
+}
+
+def input(placeholder: String, value: String): VNode {
+  return VNode {
+    tag: "input".to_string(),
+    classes: "input-field".to_string(),
+    attrs: "placeholder=\"" + placeholder + "\" value=\"" + value + "\"",
+    text: "".to_string(),
+    children_count: 0
+  }
+}
+
+def render_html(node: VNode): String {
+  if (node.tag == "input") {
+    return "<input class=\"" + node.classes + "\" " + node.attrs + " />"
+  }
+
+  var html = "<" + node.tag
+  if (len(&node.classes) > 0) {
+    html = html + " class=\"" + node.classes + "\""
+  }
+  if (len(&node.attrs) > 0) {
+    html = html + " " + node.attrs
+  }
+  html = html + ">"
+  html = html + &node.text
+  html = html + "</" + node.tag + ">"
+  return html
+}
+
+def render_page(title: String, body_html: String): String {
+  const head = "<!DOCTYPE html>\n<html>\n<head>\n  <meta charset=\"UTF-8\">\n  <title>" + title + "</title>\n"
+  const styles = "  <style>\n    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; padding: 2rem; background: #0f172a; color: #f8fafc; }\n    .card { background: #1e293b; padding: 1.5rem; border-radius: 8px; border: 1px solid #334155; max-width: 480px; }\n    .btn-primary { background: #6366f1; color: white; border: none; padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer; }\n    .btn-primary:hover { background: #4f46e5; }\n  </style>\n</head>\n<body>\n"
+  const body = "  <div id=\"app\">\n    " + body_html + "\n  </div>\n</body>\n</html>"
+  const doc = head + styles + &body
+  return doc
+}

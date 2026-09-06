@@ -1,0 +1,7 @@
+target/
+dist/
+.zyra_cache/
+.zyra_modules/
+*.exe
+*.tmp
+node_modules/

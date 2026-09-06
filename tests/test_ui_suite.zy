@@ -1,0 +1,57 @@
+import "../src/lib.zy"
+
+@test
+def test_vnode_creation(): Int {
+  const btn = button("btn-primary", "Click me")
+  print(btn.tag)
+  print(btn.classes)
+  print(btn.text)
+
+  if (btn.tag == "button" && btn.classes == "btn-primary" && btn.text == "Click me") {
+    print("[PASS] Virtual DOM VNode creation verified")
+    return 0
+  }
+  print("[FAIL] VNode creation failed")
+  return 1
+}
+
+@test
+def test_html_rendering(): Int {
+  const heading = h1("title", "Hello Zyra UI")
+  const rendered = render_html(heading)
+  print(rendered)
+
+  if (rendered == "<h1 class=\"title\">Hello Zyra UI</h1>") {
+    print("[PASS] HTML rendering verified")
+    return 0
+  }
+  print("[FAIL] HTML rendering failed")
+  return 1
+}
+
+@test
+def test_input_element(): Int {
+  const txt = input("Enter email...", "user@example.com")
+  const rendered = render_html(txt)
+  print(rendered)
+
+  if (contains(rendered, "placeholder=\"Enter email...\"") && contains(rendered, "value=\"user@example.com\"")) {
+    print("[PASS] Input element rendering verified")
+    return 0
+  }
+  print("[FAIL] Input element rendering failed")
+  return 1
+}
+
+@test
+def test_full_page_scaffold(): Int {
+  const content = render_html(div("card", "Welcome to Zyra UI"))
+  const page = render_page("Dashboard", content)
+
+  if (contains(page, "<title>Dashboard</title>") && contains(page, "Welcome to Zyra UI")) {
+    print("[PASS] Full page HTML scaffold verified")
+    return 0
+  }
+  print("[FAIL] Page scaffold failed")
+  return 1
+}
