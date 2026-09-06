@@ -11,7 +11,8 @@
     "example:todo": "zyra run examples/todo.zy",
     "example:zyx": "zyra run examples/declarative.zyx",
     "example:dashboard": "zyra run examples/dashboard.zyx",
-    "example:showcase": "zyra run examples/showcase.zyx"
+    "example:showcase": "zyra run examples/showcase.zyx",
+    "example:interactive": "zyra run examples/interactive.zyx"
   },
   "dependencies": {}
 }

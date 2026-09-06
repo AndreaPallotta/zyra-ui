@@ -1,11 +1,16 @@
 import "../src/lib.zy"
 
 def DashboardView(): String {
+  const crumbs = Breadcrumb("Cloud Console, Workloads, ZyraOps Cluster".to_string())
+
   const alert_box = Alert("All Systems Operational".to_string(), "Global edge clusters running nominal across all 14 regions.".to_string(), "success".to_string())
 
+  const spark_req = Sparkline("0,20 15,16 30,22 45,10 60,14 75,8 90,18 105,6 120,4".to_string(), "primary".to_string(), 24)
+  const spark_lat = Sparkline("0,6 15,8 30,6 45,12 60,10 75,14 90,16 105,20 120,24".to_string(), "danger".to_string(), 24)
+
   const stat_1 = StatCard("Active Services".to_string(), "48".to_string(), "4 new".to_string(), true)
-  const stat_2 = StatCard("Total Requests".to_string(), "14.2M".to_string(), "12.5%".to_string(), true)
-  const stat_3 = StatCard("P99 Latency".to_string(), "18ms".to_string(), "3ms slower".to_string(), false)
+  const stat_2 = Card("Total Requests".to_string(), "+12.5% vs yesterday".to_string(), "<div class=\"flex items-center justify-between\"><span class=\"text-2xl font-bold\">14.2M</span>" + spark_req + "</div>", "".to_string())
+  const stat_3 = Card("P99 Latency".to_string(), "3ms slower".to_string(), "<div class=\"flex items-center justify-between\"><span class=\"text-2xl font-bold text-danger\">18ms</span>" + spark_lat + "</div>", "".to_string())
   const stat_cards = stat_1 + &stat_2 + &stat_3
   const stats_grid = Grid(3, stat_cards)
 
@@ -13,11 +18,16 @@ def DashboardView(): String {
   const rows = "auth-gateway, us-east-1, 4.2k req/s, 99.99%, Active; billing-api, us-east-1, 1.1k req/s, 99.95%, Active; search-indexer, eu-west-1, 850 req/s, 99.90%, Active; analytics-worker, ap-northeast-1, 620 req/s, 98.50%, Degraded"
   const table_html = DataTable(headers.to_string(), rows.to_string())
 
-  const table_card = Card("Active Microservices".to_string(), "Live production telemetry and health status".to_string(), table_html, "<span class=\"text-muted text-xs\">Last synced: 10 seconds ago</span>".to_string())
+  const pager = Pagination(1, 4)
+  const table_footer = "<div class=\"flex justify-between items-center\"><span class=\"text-muted text-xs\">Last synced: 10 seconds ago</span>" + pager + "</div>"
+  const table_card = Card("Active Microservices".to_string(), "Live production telemetry and health status".to_string(), table_html, table_footer)
+
+  const drop = Dropdown("Cluster Actions".to_string(), "Drain Nodes, Rotate Certs, Export Metrics".to_string())
+  const toolbar = "<div class=\"flex justify-between items-center mb-4\"><div class=\"text-sm text-muted\">Region: us-east-1 (Primary)</div>" + drop + "</div>"
 
   const header = SectionHeader("Operations Overview".to_string(), "Monitor mission-critical infrastructure and deployed workloads".to_string())
 
-  const content = header + &alert_box + &stats_grid + "<div class=\"mb-6\"></div>" + &table_card
+  const content = crumbs + "<div class=\"my-4\"></div>" + &header + &alert_box + &toolbar + &stats_grid + "<div class=\"mb-6\"></div>" + &table_card
   return render_dashboard("ZyraOps Cloud Dashboard".to_string(), "ZyraOps".to_string(), "Overview, Metrics, Deployments, Settings".to_string(), "Overview".to_string(), content, theme_nord())
 }
 

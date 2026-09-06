@@ -456,6 +456,87 @@ a:hover { text-decoration: underline; }
 .modal-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; }
 .modal-body { color: var(--zy-text-muted); font-size: 0.875rem; margin: 1rem 0; }
 .modal-footer { display: flex; justify-content: flex-end; gap: 0.5rem; }
+
+.glass { background: rgba(255, 255, 255, 0.04); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: var(--zy-radius); }
+.shadow-xl { box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.3); }
+.glow-primary { box-shadow: 0 0 20px rgba(99, 102, 241, 0.35); }
+.glow-accent { box-shadow: 0 0 20px rgba(56, 189, 248, 0.35); }
+.transition-all { transition: all 0.2s ease-in-out; }
+
+@keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+.animate-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+.skeleton { background: linear-gradient(90deg, var(--zy-surface) 25%, var(--zy-surface-hover) 50%, var(--zy-surface) 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; border-radius: var(--zy-radius); display: block; }
+
+.breadcrumb { display: flex; align-items: center; gap: 0.5rem; list-style: none; font-size: 0.875rem; color: var(--zy-text-muted); }
+.breadcrumb-item a { color: var(--zy-text-muted); }
+.breadcrumb-item a:hover { color: var(--zy-primary); }
+.breadcrumb-item.active { color: var(--zy-text); font-weight: 600; }
+.breadcrumb-sep { color: var(--zy-border); user-select: none; }
+
+.tabs-container { width: 100%; }
+.tabs-nav { display: flex; border-bottom: 1px solid var(--zy-border); gap: 0.5rem; margin-bottom: 1.5rem; }
+.tab-btn { padding: 0.75rem 1rem; font-weight: 600; font-size: 0.875rem; color: var(--zy-text-muted); border-bottom: 2px solid transparent; cursor: pointer; background: transparent; border-top: none; border-left: none; border-right: none; transition: all 0.2s; }
+.tab-btn:hover { color: var(--zy-text); }
+.tab-btn.active { color: var(--zy-primary); border-bottom-color: var(--zy-primary); }
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+.accordion-group { border: 1px solid var(--zy-border); border-radius: var(--zy-radius); overflow: hidden; }
+.accordion-item { border-bottom: 1px solid var(--zy-border); }
+.accordion-item:last-child { border-bottom: none; }
+.accordion-header { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.25rem; font-weight: 600; color: var(--zy-text); background: var(--zy-surface); border: none; cursor: pointer; text-align: left; font-size: 0.9375rem; }
+.accordion-header:hover { background-color: var(--zy-surface-hover); }
+.accordion-arrow { font-size: 1.125rem; font-weight: 700; color: var(--zy-text-muted); }
+.accordion-body { padding: 1rem 1.25rem; background-color: var(--zy-bg); color: var(--zy-text-muted); font-size: 0.875rem; line-height: 1.6; }
+
+.toast { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; padding: 1rem 1.25rem; background-color: var(--zy-surface); border: 1px solid var(--zy-border); border-left: 4px solid var(--zy-primary); border-radius: var(--zy-radius); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3); max-width: 380px; }
+.toast-info { border-left-color: var(--zy-accent); }
+.toast-success { border-left-color: var(--zy-success); }
+.toast-warning { border-left-color: var(--zy-warning); }
+.toast-danger { border-left-color: var(--zy-danger); }
+.toast-title { font-weight: 700; font-size: 0.875rem; color: var(--zy-text); margin-bottom: 0.25rem; }
+.toast-msg { font-size: 0.8125rem; color: var(--zy-text-muted); }
+.toast-close { background: transparent; border: none; color: var(--zy-text-muted); cursor: pointer; font-size: 1.125rem; line-height: 1; padding: 0; }
+.toast-close:hover { color: var(--zy-text); }
+
+.pagination { display: flex; align-items: center; gap: 0.375rem; list-style: none; }
+.page-item { display: inline-flex; align-items: center; justify-content: center; min-width: 2.25rem; height: 2.25rem; padding: 0 0.5rem; font-size: 0.875rem; font-weight: 600; border-radius: var(--zy-radius); border: 1px solid var(--zy-border); background: var(--zy-surface); color: var(--zy-text); text-decoration: none; cursor: pointer; }
+.page-item:hover { background: var(--zy-surface-hover); text-decoration: none; }
+.page-item.active { background: var(--zy-primary); border-color: var(--zy-primary); color: #ffffff; }
+.page-item.disabled { opacity: 0.4; cursor: not-allowed; pointer-events: none; }
+
+.tooltip-wrapper { position: relative; display: inline-block; }
+.tooltip-box { visibility: hidden; opacity: 0; position: absolute; bottom: 125%; left: 50%; transform: translateX(-50%); background-color: var(--zy-surface-hover); color: var(--zy-text); font-size: 0.75rem; padding: 0.35rem 0.65rem; border-radius: var(--zy-radius); white-space: nowrap; border: 1px solid var(--zy-border); z-index: 50; transition: opacity 0.2s, visibility 0.2s; pointer-events: none; }
+.tooltip-wrapper:hover .tooltip-box { visibility: visible; opacity: 1; }
+
+.dropdown { position: relative; display: inline-block; }
+.dropdown-menu { display: none; position: absolute; top: calc(100% + 0.5rem); left: 0; min-width: 180px; background: var(--zy-surface); border: 1px solid var(--zy-border); border-radius: var(--zy-radius); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3); padding: 0.375rem; z-index: 100; list-style: none; }
+.dropdown-item { display: block; padding: 0.5rem 0.75rem; font-size: 0.875rem; color: var(--zy-text); border-radius: calc(var(--zy-radius) - 2px); text-decoration: none; cursor: pointer; }
+.dropdown-item:hover { background: var(--zy-surface-hover); color: var(--zy-primary); text-decoration: none; }
+.dropdown:hover .dropdown-menu, .dropdown.open .dropdown-menu { display: block; }
+
+.code-block { background: var(--zy-surface); border: 1px solid var(--zy-border); border-radius: var(--zy-radius); overflow: hidden; margin: 1rem 0; font-family: 'JetBrains Mono', 'Fira Code', monospace; }
+.code-header { display: flex; justify-content: space-between; align-items: center; padding: 0.5rem 1rem; background: var(--zy-surface-hover); border-bottom: 1px solid var(--zy-border); font-size: 0.75rem; color: var(--zy-text-muted); text-transform: uppercase; font-weight: 700; }
+.code-content { padding: 1rem; overflow-x: auto; font-size: 0.875rem; line-height: 1.6; color: var(--zy-text); }
+.code-content pre { margin: 0; }
+
+.empty-state { text-align: center; padding: 3rem 1.5rem; background: var(--zy-surface); border: 2px dashed var(--zy-border); border-radius: var(--zy-radius); }
+.empty-icon { font-size: 2.5rem; color: var(--zy-text-muted); margin-bottom: 1rem; display: inline-block; line-height: 1; }
+.empty-title { font-size: 1.125rem; font-weight: 700; color: var(--zy-text); margin-bottom: 0.5rem; }
+.empty-desc { font-size: 0.875rem; color: var(--zy-text-muted); max-width: 400px; margin: 0 auto 1.5rem auto; }
+
+.drawer-backdrop { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.6); z-index: 1000; display: flex; }
+.drawer-left { justify-content: flex-start; }
+.drawer-right { justify-content: flex-end; }
+.drawer-panel { width: 100%; max-width: 380px; height: 100%; background: var(--zy-surface); border-left: 1px solid var(--zy-border); padding: 1.5rem; display: flex; flex-direction: column; box-shadow: -10px 0 25px -5px rgba(0, 0, 0, 0.4); }
+.drawer-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--zy-border); }
+.drawer-title { font-size: 1.125rem; font-weight: 700; color: var(--zy-text); }
+.drawer-body { flex: 1; overflow-y: auto; color: var(--zy-text-muted); font-size: 0.875rem; }
+.drawer-close { background: transparent; border: none; color: var(--zy-text-muted); cursor: pointer; font-size: 1.25rem; }
+.drawer-close:hover { color: var(--zy-text); }
+
+.sparkline-svg { display: inline-block; vertical-align: middle; overflow: visible; }
 "#;
 
   var out = vars + base_rules
@@ -705,7 +786,7 @@ def DataTable(headers_csv: String, rows_csv: String): String {
 
 def Modal(modal_id: String, title: String, content: String, footer: String): String {
   return (
-    <div class="modal-backdrop" id={modal_id}>
+    <div class="modal-backdrop" id={modal_id} style="display:none;">
       <div class="modal-card">
         <div class="modal-title">{title}</div>
         <div class="modal-body">{content}</div>
@@ -715,10 +796,175 @@ def Modal(modal_id: String, title: String, content: String, footer: String): Str
   )
 }
 
+def Breadcrumb(items_csv: String): String {
+  var html = "<nav class=\"breadcrumb\">".to_string()
+  const items = str.split(&items_csv, ",")
+  const total = len(&items)
+  var idx = 0
+  for l in items {
+    const item = trim(&l)
+    if len(&item) > 0 {
+      idx = idx + 1
+      if idx == total {
+        html = html + "<span class=\"breadcrumb-item active\">" + &item + "</span>"
+      } else {
+        html = html + "<span class=\"breadcrumb-item\"><a href=\"#\">" + &item + "</a></span><span class=\"breadcrumb-sep\">/</span>"
+      }
+    }
+  }
+  html = html + "</nav>"
+  return html
+}
+
+def Tabs(tab_labels_csv: String, active_tab: String, panels_html: String): String {
+  var nav_html = "<div class=\"tabs-nav\">".to_string()
+  const tabs = str.split(&tab_labels_csv, ",")
+  for t in tabs {
+    const tab = trim(&t)
+    if len(&tab) > 0 {
+      const slug = "tab-" + &str.lower(&tab)
+      const cls = if tab == active_tab { "tab-btn active" } else { "tab-btn" }
+      nav_html = nav_html + "<button class=\"" + cls + "\" data-tab-target=\"" + &slug + "\">" + &tab + "</button>"
+    }
+  }
+  nav_html = nav_html + "</div>"
+  return "<div class=\"tabs-container\">" + nav_html + "<div class=\"tabs-content\">" + &panels_html + "</div></div>"
+}
+
+def TabPanel(tab_name: String, is_active: Bool, content: String): String {
+  const slug = "tab-" + &str.lower(&tab_name)
+  const cls = if is_active { "tab-panel active" } else { "tab-panel" }
+  return "<div class=\"" + cls + "\" id=\"" + slug + "\">" + &content + "</div>"
+}
+
+def Accordion(title: String, content: String, is_open: Bool): String {
+  const arrow = if is_open { "-" } else { "+" }
+  const body_style = if is_open { "" } else { " style=\"display:none;\"" }
+  return "<div class=\"accordion-item\"><button class=\"accordion-header\" data-accordion-toggle><span>" + &title + "</span><span class=\"accordion-arrow\">" + arrow + "</span></button><div class=\"accordion-body\"" + body_style + ">" + &content + "</div></div>"
+}
+
+def Toast(title: String, message: String, variant: String): String {
+  const cls = "toast toast-" + &variant
+  return "<div class=\"" + cls + "\"><div><div class=\"toast-title\">" + &title + "</div><div class=\"toast-msg\">" + &message + "</div></div><button class=\"toast-close\" data-toast-close>&times;</button></div>"
+}
+
+def Pagination(current_page: Int, total_pages: Int): String {
+  var html = "<nav class=\"pagination\">".to_string()
+  const prev_cls = if current_page <= 1 { "page-item disabled" } else { "page-item" }
+  html = html + "<a href=\"#\" class=\"" + prev_cls + "\">&laquo;</a>"
+  for p in 1..=total_pages {
+    const p_str = format!("{}", p)
+    const active_cls = if p == current_page { "page-item active" } else { "page-item" }
+    html = html + "<a href=\"#\" class=\"" + active_cls + "\">" + &p_str + "</a>"
+  }
+  const next_cls = if current_page >= total_pages { "page-item disabled" } else { "page-item" }
+  html = html + "<a href=\"#\" class=\"" + next_cls + "\">&raquo;</a>"
+  html = html + "</nav>"
+  return html
+}
+
+def Tooltip(text: String, content_html: String): String {
+  return "<div class=\"tooltip-wrapper\">" + &content_html + "<div class=\"tooltip-box\">" + &text + "</div></div>"
+}
+
+def Dropdown(button_label: String, items_csv: String): String {
+  var items_html = "<ul class=\"dropdown-menu\">".to_string()
+  const items = str.split(&items_csv, ",")
+  for it in items {
+    const item = trim(&it)
+    if len(&item) > 0 {
+      items_html = items_html + "<li><a class=\"dropdown-item\" href=\"#\">" + &item + "</a></li>"
+    }
+  }
+  items_html = items_html + "</ul>"
+  return "<div class=\"dropdown\"><button class=\"btn btn-secondary btn-sm\">" + &button_label + " &#9662;</button>" + items_html + "</div>"
+}
+
+def Skeleton(variant: String, width: String, height: String): String {
+  const rad = if variant == "circle" { "border-radius: 50%;" } else { "" }
+  const style = "width: " + &width + "; height: " + &height + "; " + rad
+  return "<div class=\"skeleton\" style=\"" + &style + "\"></div>"
+}
+
+def CodeBlock(code: String, language: String): String {
+  return "<div class=\"code-block\"><div class=\"code-header\"><span>" + &language + "</span><button class=\"btn btn-ghost btn-sm\" onclick=\"navigator.clipboard.writeText(this.closest('.code-block').querySelector('pre').innerText)\">Copy</button></div><div class=\"code-content\"><pre><code>" + &code + "</code></pre></div></div>"
+}
+
+def EmptyState(title: String, description: String, action_html: String): String {
+  return "<div class=\"empty-state\"><div class=\"empty-icon\">&#9671;</div><div class=\"empty-title\">" + &title + "</div><div class=\"empty-desc\">" + &description + "</div><div class=\"empty-action\">" + &action_html + "</div></div>"
+}
+
+def Drawer(drawer_id: String, title: String, content: String, is_right: Bool): String {
+  const side = if is_right { "drawer-right" } else { "drawer-left" }
+  return "<div class=\"drawer-backdrop " + side + "\" id=\"" + &drawer_id + "\" style=\"display:none;\"><div class=\"drawer-panel\"><div class=\"drawer-header\"><div class=\"drawer-title\">" + &title + "</div><button class=\"drawer-close\" data-drawer-close>&times;</button></div><div class=\"drawer-body\">" + &content + "</div></div></div>"
+}
+
+def Sparkline(points_str: String, color: String, height: Int): String {
+  const stroke = if contains(&color, "#") || contains(&color, "rgb") { color } else { "var(--zy-" + &color + ")" }
+  const h_str = format!("{}", height)
+  return "<svg class=\"sparkline-svg\" width=\"120\" height=\"" + &h_str + "\" viewBox=\"0 0 120 " + &h_str + "\"><polyline points=\"" + &points_str + "\" fill=\"none\" stroke=\"" + &stroke + "\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" /></svg>"
+}
+
 def render_themed_page(title: String, body_html: String, theme: Theme, custom_css: String): String {
   const head = "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>" + title + "</title>\n"
   const styles = "  <style>\n" + generate_stylesheet(theme, custom_css) + "\n  </style>\n</head>\n<body>\n"
-  const body = "  <div id=\"app\">\n    " + body_html + "\n  </div>\n</body>\n</html>"
+  const client_script = r#"  <script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('[data-tab-target]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var target = btn.getAttribute('data-tab-target');
+      var container = btn.closest('.tabs-container');
+      container && container.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+      container && container.querySelectorAll('.tab-panel').forEach(function(p) { p.classList.remove('active'); });
+      btn.classList.add('active');
+      var panel = container ? container.querySelector('#' + target) : null;
+      panel && panel.classList.add('active');
+    });
+  });
+  document.querySelectorAll('[data-accordion-toggle]').forEach(function(hdr) {
+    hdr.addEventListener('click', function() {
+      var item = hdr.closest('.accordion-item');
+      var body = item ? item.querySelector('.accordion-body') : null;
+      var arrow = item ? item.querySelector('.accordion-arrow') : null;
+      var isHidden = body && body.style.display === 'none';
+      body && (body.style.display = isHidden ? 'block' : 'none');
+      arrow && (arrow.textContent = isHidden ? '-' : '+');
+    });
+  });
+  document.querySelectorAll('[data-modal-open]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var m = document.getElementById(btn.getAttribute('data-modal-open'));
+      m && (m.style.display = 'flex');
+    });
+  });
+  document.querySelectorAll('[data-modal-close]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var m = btn.closest('.modal-backdrop');
+      m && (m.style.display = 'none');
+    });
+  });
+  document.querySelectorAll('[data-drawer-open]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var d = document.getElementById(btn.getAttribute('data-drawer-open'));
+      d && (d.style.display = 'flex');
+    });
+  });
+  document.querySelectorAll('[data-drawer-close]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var d = btn.closest('.drawer-backdrop');
+      d && (d.style.display = 'none');
+    });
+  });
+  document.querySelectorAll('[data-toast-close]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var t = btn.closest('.toast');
+      t && t.remove();
+    });
+  });
+});
+  </script>
+"#;
+  const body = "  <div id=\"app\">\n    " + body_html + "\n  </div>\n" + client_script + "</body>\n</html>"
   const doc = head + &styles + &body
   return doc
 }

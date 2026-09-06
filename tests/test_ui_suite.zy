@@ -178,3 +178,132 @@ def test_dashboard_and_modal(): Int {
   print("[PASS] Dashboard and Modal verified")
   return 0
 }
+
+@test
+def test_tabs_and_breadcrumb(): Int {
+  const crumbs = Breadcrumb("Home, Projects, zyra-ui, Settings".to_string())
+  if (!contains(crumbs, "class=\"breadcrumb\"") || !contains(crumbs, "<span class=\"breadcrumb-item active\">Settings</span>") || !contains(crumbs, "<span class=\"breadcrumb-sep\">/</span>") || !contains(crumbs, "Projects")) {
+    print("[FAIL] Breadcrumb rendering failed")
+    return 1
+  }
+
+  const p1 = TabPanel("Overview".to_string(), true, "<p>Overview Panel</p>".to_string())
+  const p2 = TabPanel("Metrics".to_string(), false, "<p>Metrics Panel</p>".to_string())
+  const tabs = Tabs("Overview, Metrics, Logs".to_string(), "Overview".to_string(), p1 + &p2)
+
+  if (!contains(tabs, "class=\"tabs-container\"") || !contains(tabs, "data-tab-target=\"tab-overview\"") || !contains(tabs, "tab-btn active") || !contains(tabs, "tab-panel active") || !contains(tabs, "Overview Panel")) {
+    print("[FAIL] Tabs rendering failed")
+    return 1
+  }
+
+  print("[PASS] Tabs and Breadcrumb components verified")
+  return 0
+}
+
+@test
+def test_accordion_and_toast(): Int {
+  const acc_open = Accordion("Cluster Nodes".to_string(), "<p>Node 1 online</p>".to_string(), true)
+  if (!contains(acc_open, "accordion-item") || !contains(acc_open, "data-accordion-toggle") || !contains(acc_open, "Node 1 online") || contains(acc_open, "display:none;")) {
+    print("[FAIL] Open accordion rendering failed")
+    return 1
+  }
+
+  const acc_closed = Accordion("Storage Volumes".to_string(), "<p>Vol 2 attached</p>".to_string(), false)
+  if (!contains(acc_closed, "display:none;") || !contains(acc_closed, "Storage Volumes")) {
+    print("[FAIL] Closed accordion rendering failed")
+    return 1
+  }
+
+  const toast = Toast("Deployment Live".to_string(), "Production release v2.5.0 ready".to_string(), "success".to_string())
+  if (!contains(toast, "toast toast-success") || !contains(toast, "data-toast-close") || !contains(toast, "Deployment Live") || !contains(toast, "Production release v2.5.0 ready")) {
+    print("[FAIL] Toast rendering failed")
+    return 1
+  }
+
+  print("[PASS] Accordion and Toast components verified")
+  return 0
+}
+
+@test
+def test_pagination_and_tooltip(): Int {
+  const pager = Pagination(3, 7)
+  if (!contains(pager, "class=\"pagination\"") || !contains(pager, "class=\"page-item active\">3</a>") || !contains(pager, ">1</a>") || !contains(pager, ">7</a>") || !contains(pager, "&laquo;") || !contains(pager, "&raquo;")) {
+    print("[FAIL] Pagination rendering failed")
+    return 1
+  }
+
+  const tip = Tooltip("Click to sync data".to_string(), "<button>Sync</button>".to_string())
+  if (!contains(tip, "tooltip-wrapper") || !contains(tip, "tooltip-box") || !contains(tip, "Click to sync data") || !contains(tip, "<button>Sync</button>")) {
+    print("[FAIL] Tooltip rendering failed")
+    return 1
+  }
+
+  print("[PASS] Pagination and Tooltip components verified")
+  return 0
+}
+
+@test
+def test_dropdown_and_skeleton(): Int {
+  const drop = Dropdown("Actions".to_string(), "Reboot, Scale Up, Terminate".to_string())
+  if (!contains(drop, "class=\"dropdown\"") || !contains(drop, "dropdown-menu") || !contains(drop, "Reboot") || !contains(drop, "Terminate") || !contains(drop, "Actions")) {
+    print("[FAIL] Dropdown rendering failed")
+    return 1
+  }
+
+  const skel_circle = Skeleton("circle".to_string(), "40px".to_string(), "40px".to_string())
+  if (!contains(skel_circle, "skeleton") || !contains(skel_circle, "border-radius: 50%;") || !contains(skel_circle, "width: 40px")) {
+    print("[FAIL] Circle skeleton rendering failed")
+    return 1
+  }
+
+  const skel_rect = Skeleton("rect".to_string(), "100%".to_string(), "24px".to_string())
+  if (!contains(skel_rect, "skeleton") || !contains(skel_rect, "width: 100%") || !contains(skel_rect, "height: 24px")) {
+    print("[FAIL] Rect skeleton rendering failed")
+    return 1
+  }
+
+  print("[PASS] Dropdown and Skeleton components verified")
+  return 0
+}
+
+@test
+def test_code_block_and_empty_state(): Int {
+  const code = CodeBlock("def main(): Int { return 0 }".to_string(), "zyra".to_string())
+  if (!contains(code, "code-block") || !contains(code, "<span>zyra</span>") || !contains(code, "def main(): Int { return 0 }") || !contains(code, "Copy")) {
+    print("[FAIL] CodeBlock rendering failed")
+    return 1
+  }
+
+  const empty = EmptyState("No Workloads Running".to_string(), "Deploy a service or container to get started".to_string(), "<button class=\"btn btn-primary\">Deploy</button>".to_string())
+  if (!contains(empty, "empty-state") || !contains(empty, "No Workloads Running") || !contains(empty, "Deploy a service or container") || !contains(empty, "btn-primary")) {
+    print("[FAIL] EmptyState rendering failed")
+    return 1
+  }
+
+  print("[PASS] CodeBlock and EmptyState components verified")
+  return 0
+}
+
+@test
+def test_drawer_sparkline_and_micro_runtime(): Int {
+  const drawer = Drawer("settings-drawer".to_string(), "Service Settings".to_string(), "<p>Config fields</p>".to_string(), true)
+  if (!contains(drawer, "drawer-backdrop drawer-right") || !contains(drawer, "id=\"settings-drawer\"") || !contains(drawer, "Service Settings") || !contains(drawer, "data-drawer-close")) {
+    print("[FAIL] Drawer rendering failed")
+    return 1
+  }
+
+  const spark = Sparkline("0,20 20,10 40,15 60,5 80,25 100,12 120,4".to_string(), "success".to_string(), 32)
+  if (!contains(spark, "class=\"sparkline-svg\"") || !contains(spark, "points=\"0,20 20,10 40,15 60,5 80,25 100,12 120,4\"") || !contains(spark, "stroke=\"var(--zy-success)\"") || !contains(spark, "height=\"32\"")) {
+    print("[FAIL] Sparkline rendering failed")
+    return 1
+  }
+
+  const page = render_page("Interactive Page".to_string(), "<p>Content</p>".to_string())
+  if (!contains(page, "<script>") || !contains(page, "data-tab-target") || !contains(page, "data-accordion-toggle") || !contains(page, "data-modal-open") || !contains(page, "data-drawer-open") || !contains(page, "data-toast-close")) {
+    print("[FAIL] Interactive micro-runtime script missing from page")
+    return 1
+  }
+
+  print("[PASS] Drawer, Sparkline, and Interactive Micro-Runtime verified")
+  return 0
+}
