@@ -9,7 +9,9 @@
     "test": "zyra test tests/test_ui_suite.zy",
     "example:counter": "zyra run examples/counter.zy",
     "example:todo": "zyra run examples/todo.zy",
-    "example:zyx": "zyra run examples/declarative.zyx"
+    "example:zyx": "zyra run examples/declarative.zyx",
+    "example:dashboard": "zyra run examples/dashboard.zyx",
+    "example:showcase": "zyra run examples/showcase.zyx"
   },
   "dependencies": {}
 }

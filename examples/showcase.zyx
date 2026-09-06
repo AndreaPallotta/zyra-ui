@@ -1,0 +1,59 @@
+import "../src/lib.zy"
+
+def ComponentGallery(): String {
+  const h1 = SectionHeader("Zyra UI Component Showcase".to_string(), "Comprehensive design system and native component gallery".to_string())
+
+  const b1 = Button("Primary Button".to_string(), "primary".to_string(), "md".to_string(), false)
+  const b2 = Button("Secondary".to_string(), "secondary".to_string(), "md".to_string(), false)
+  const b3 = Button("Success Action".to_string(), "success".to_string(), "md".to_string(), false)
+  const b4 = Button("Danger Delete".to_string(), "danger".to_string(), "md".to_string(), false)
+  const b5 = Button("Disabled State".to_string(), "primary".to_string(), "md".to_string(), true)
+  const btn_row = "<div class=\"flex flex-wrap gap-4 items-center\">" + b1 + &b2 + &b3 + &b4 + &b5 + "</div>"
+  const card_buttons = Card("Buttons & Actions".to_string(), "Standard variant and state combinations".to_string(), btn_row, "".to_string())
+
+  const bg1 = Badge("Default".to_string(), "neutral".to_string())
+  const bg2 = Badge("Active".to_string(), "primary".to_string())
+  const bg3 = Badge("Passed".to_string(), "success".to_string())
+  const bg4 = Badge("Warning".to_string(), "warning".to_string())
+  const bg5 = Badge("Critical".to_string(), "danger".to_string())
+  const bg6 = Badge("Info".to_string(), "info".to_string())
+  const badge_row = "<div class=\"flex flex-wrap gap-2 items-center\">" + bg1 + &bg2 + &bg3 + &bg4 + &bg5 + &bg6 + "</div>"
+  const card_badges = Card("Status Badges".to_string(), "Pill badges for metadata and live states".to_string(), badge_row, "".to_string())
+
+  const al_info = Alert("Informational Notice".to_string(), "New release v2.5.0 features native declarative markup.".to_string(), "info".to_string())
+  const al_err = Alert("Connection Lost".to_string(), "Unable to reach database cluster in us-west-2.".to_string(), "danger".to_string())
+  const alert_block = al_info + "<div class=\"mb-2\"></div>" + &al_err
+  const card_alerts = Card("Alert Notifications".to_string(), "Contextual message banners".to_string(), alert_block, "".to_string())
+
+  const p1 = ProgressBar(25, "danger".to_string())
+  const p2 = ProgressBar(65, "primary".to_string())
+  const p3 = ProgressBar(100, "success".to_string())
+  const prog_block = "<div class=\"flex flex-col gap-4\">" + p1 + &p2 + &p3 + "</div>"
+  const card_progress = Card("Progress Indicators".to_string(), "Horizontal progress meters with color fills".to_string(), prog_block, "".to_string())
+
+  const av_s = Avatar("Alpha".to_string(), "sm".to_string())
+  const av_m = Avatar("Bravo".to_string(), "md".to_string())
+  const av_l = Avatar("Charlie".to_string(), "lg".to_string())
+  const av_row = "<div class=\"flex gap-4 items-center\">" + av_s + &av_m + &av_l + "</div>"
+  const card_avatars = Card("User Avatars".to_string(), "Initials avatars in multiple scale tiers".to_string(), av_row, "".to_string())
+
+  const form_email = FormField("demo_email".to_string(), "Email Address".to_string(), "email".to_string(), "dev@zyra.org".to_string(), "".to_string(), "".to_string())
+  const form_role = SelectField("demo_role".to_string(), "Access Tier".to_string(), "Developer, Operator, Administrator".to_string(), "Developer".to_string())
+  const form_check = CheckboxField("demo_optin".to_string(), "Subscribe to release notifications".to_string(), true)
+  const form_body = "<div class=\"flex flex-col gap-4\">" + form_email + &form_role + &form_check + "</div>"
+  const card_forms = Card("Form Controls".to_string(), "Form input fields with labels and validation styling".to_string(), form_body, "".to_string())
+
+  const grid_top = Grid(2, card_buttons + &card_badges)
+  const grid_mid = Grid(2, card_alerts + &card_progress)
+  const grid_bot = Grid(2, card_avatars + &card_forms)
+
+  const content = h1 + grid_top + "<div class=\"mb-6\"></div>" + &grid_mid + "<div class=\"mb-6\"></div>" + &grid_bot
+  return render_themed_page("Zyra UI Showcase".to_string(), "<div class=\"container\">" + &content + "</div>", theme_dark(), "".to_string())
+}
+
+def main(): Int {
+  const html = ComponentGallery()
+  print("[OK] Showcase gallery HTML generated successfully:")
+  print(&html[..280])
+  return 0
+}

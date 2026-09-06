@@ -3,10 +3,6 @@ import "../src/lib.zy"
 @test
 def test_vnode_creation(): Int {
   const btn = button("btn-primary", "Click me")
-  print(btn.tag)
-  print(btn.classes)
-  print(btn.text)
-
   if (btn.tag == "button" && btn.classes == "btn-primary" && btn.text == "Click me") {
     print("[PASS] Virtual DOM VNode creation verified")
     return 0
@@ -19,8 +15,6 @@ def test_vnode_creation(): Int {
 def test_html_rendering(): Int {
   const heading = h1("title", "Hello Zyra UI")
   const rendered = render_html(heading)
-  print(rendered)
-
   if (rendered == "<h1 class=\"title\">Hello Zyra UI</h1>") {
     print("[PASS] HTML rendering verified")
     return 0
@@ -33,8 +27,6 @@ def test_html_rendering(): Int {
 def test_input_element(): Int {
   const txt = input("Enter email...", "user@example.com")
   const rendered = render_html(txt)
-  print(rendered)
-
   if (contains(rendered, "placeholder=\"Enter email...\"") && contains(rendered, "value=\"user@example.com\"")) {
     print("[PASS] Input element rendering verified")
     return 0
@@ -44,14 +36,145 @@ def test_input_element(): Int {
 }
 
 @test
-def test_full_page_scaffold(): Int {
-  const content = render_html(div("card", "Welcome to Zyra UI"))
-  const page = render_page("Dashboard", content)
+def test_themes_and_css(): Int {
+  const dark = theme_dark()
+  const nord = theme_nord()
+  const cyber = theme_cyberpunk()
 
-  if (contains(page, "<title>Dashboard</title>") && contains(page, "Welcome to Zyra UI")) {
-    print("[PASS] Full page HTML scaffold verified")
-    return 0
+  if (dark.name != "dark" || nord.name != "nord" || cyber.name != "cyberpunk") {
+    print("[FAIL] Theme names mismatch")
+    return 1
   }
-  print("[FAIL] Page scaffold failed")
-  return 1
+
+  const css = theme_to_css(nord)
+  if (!contains(css, "--zy-bg: #2e3440") || !contains(css, "--zy-primary: #88c0d0")) {
+    print("[FAIL] Theme CSS variable generation failed")
+    return 1
+  }
+
+  const sheet = generate_stylesheet(dark, ".custom-hero { color: red; }".to_string())
+  if (!contains(sheet, "--zy-bg: #0b0f19") || !contains(sheet, ".custom-hero { color: red; }") || !contains(sheet, ".container")) {
+    print("[FAIL] Stylesheet generation failed")
+    return 1
+  }
+
+  print("[PASS] Themes and CSS generation verified")
+  return 0
+}
+
+@test
+def test_button_and_badge(): Int {
+  const btn_active = Button("Submit".to_string(), "primary".to_string(), "md".to_string(), false)
+  if (!contains(btn_active, "btn-primary") || !contains(btn_active, "btn-md") || !contains(btn_active, "Submit") || contains(btn_active, "disabled")) {
+    print("[FAIL] Active button rendering failed")
+    return 1
+  }
+
+  const btn_disabled = Button("Processing".to_string(), "secondary".to_string(), "sm".to_string(), true)
+  if (!contains(btn_disabled, "btn-secondary") || !contains(btn_disabled, "btn-sm") || !contains(btn_disabled, "disabled")) {
+    print("[FAIL] Disabled button rendering failed")
+    return 1
+  }
+
+  const badge_ok = Badge("Active".to_string(), "success".to_string())
+  if (!contains(badge_ok, "badge badge-success") || !contains(badge_ok, "Active")) {
+    print("[FAIL] Badge rendering failed")
+    return 1
+  }
+
+  print("[PASS] Button and Badge components verified")
+  return 0
+}
+
+@test
+def test_alert_and_stat_card(): Int {
+  const alert = Alert("Security Warning".to_string(), "Rotate your API keys now".to_string(), "warning".to_string())
+  if (!contains(alert, "alert alert-warning") || !contains(alert, "Security Warning") || !contains(alert, "Rotate your API keys now")) {
+    print("[FAIL] Alert rendering failed")
+    return 1
+  }
+
+  const stat_up = StatCard("Monthly Active Users".to_string(), "128,450".to_string(), "14.2%".to_string(), true)
+  if (!contains(stat_up, "Monthly Active Users") || !contains(stat_up, "128,450") || !contains(stat_up, "delta-positive") || !contains(stat_up, "+14.2%")) {
+    print("[FAIL] StatCard positive delta rendering failed")
+    return 1
+  }
+
+  const stat_down = StatCard("Error Rate".to_string(), "0.04%".to_string(), "0.01%".to_string(), false)
+  if (!contains(stat_down, "delta-negative") || contains(stat_down, "+0.01%")) {
+    print("[FAIL] StatCard negative delta rendering failed")
+    return 1
+  }
+
+  print("[PASS] Alert and StatCard components verified")
+  return 0
+}
+
+@test
+def test_form_controls(): Int {
+  const f_input = FormField("user_email".to_string(), "Email Address".to_string(), "email".to_string(), "name@org.com".to_string(), "test@org.com".to_string(), "Invalid email format".to_string())
+  if (!contains(f_input, "id=\"user_email\"") || !contains(f_input, "type=\"email\"") || !contains(f_input, "value=\"test@org.com\"") || !contains(f_input, "Invalid email format")) {
+    print("[FAIL] FormField rendering failed")
+    return 1
+  }
+
+  const f_select = SelectField("env".to_string(), "Environment".to_string(), "Development, Staging, Production".to_string(), "Staging".to_string())
+  if (!contains(f_select, "value=\"Staging\" selected") || !contains(f_select, "value=\"Development\"") || !contains(f_select, "id=\"env\"")) {
+    print("[FAIL] SelectField rendering failed")
+    return 1
+  }
+
+  const f_text = TextareaField("notes".to_string(), "Release Notes".to_string(), 6, "Type here...".to_string(), "Initial build".to_string())
+  if (!contains(f_text, "rows=\"6\"") || !contains(f_text, "Initial build") || !contains(f_text, "id=\"notes\"")) {
+    print("[FAIL] TextareaField rendering failed")
+    return 1
+  }
+
+  const f_check = CheckboxField("terms".to_string(), "Agree to TOS".to_string(), true)
+  if (!contains(f_check, "type=\"checkbox\"") || !contains(f_check, "name=\"terms\"") || !contains(f_check, "Agree to TOS")) {
+    print("[FAIL] CheckboxField rendering failed")
+    return 1
+  }
+
+  print("[PASS] Form controls verified")
+  return 0
+}
+
+@test
+def test_data_table_and_avatar(): Int {
+  const headers = "ID, Service, Status, Uptime"
+  const rows = "1, Auth Gateway, Active, 99.98%; 2, Payment Service, Active, 99.95%; 3, Storage Node, Degraded, 98.40%"
+  const table = DataTable(headers.to_string(), rows.to_string())
+
+  if (!contains(table, "<th>ID</th>") || !contains(table, "<th>Service</th>") || !contains(table, "<td>Auth Gateway</td>") || !contains(table, "<td>Storage Node</td>") || !contains(table, "<table class=\"table\">")) {
+    print("[FAIL] DataTable rendering failed")
+    return 1
+  }
+
+  const av = Avatar("Alice".to_string(), "lg".to_string())
+  if (!contains(av, "avatar-lg") || !contains(av, "A")) {
+    print("[FAIL] Avatar rendering failed")
+    return 1
+  }
+
+  print("[PASS] DataTable and Avatar components verified")
+  return 0
+}
+
+@test
+def test_dashboard_and_modal(): Int {
+  const modal = Modal("deploy-modal".to_string(), "Deploy Confirmation".to_string(), "Ready to release v2.5.0?".to_string(), "<button class=\"btn btn-primary\">Confirm</button>".to_string())
+  if (!contains(modal, "id=\"deploy-modal\"") || !contains(modal, "Deploy Confirmation") || !contains(modal, "Ready to release v2.5.0?")) {
+    print("[FAIL] Modal rendering failed")
+    return 1
+  }
+
+  const page = render_dashboard("Zyra Cloud".to_string(), "ZyraOps".to_string(), "Overview, Services, Settings".to_string(), "Overview".to_string(), "<p>Cluster status green</p>".to_string(), theme_dracula())
+  if (!contains(page, "<title>Zyra Cloud</title>") || !contains(page, "nav-link-active") || !contains(page, "Cluster status green") || !contains(page, "--zy-bg: #282a36")) {
+    print("[FAIL] Dashboard template rendering failed")
+    return 1
+  }
+
+  print("[PASS] Dashboard and Modal verified")
+  return 0
 }
